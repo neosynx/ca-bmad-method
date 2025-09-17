@@ -281,10 +281,15 @@ class Installer {
         for (const dep of dependencies) {
           spinner.text = `Copying dependency: ${dep}`;
 
-          if (dep.includes('*')) {
+          // Handle both old format (.bmad-core/tasks/file.md) and new format (tasks/file.md)
+          const isOldFormat = dep.startsWith('.bmad-core/');
+          const relativeDepPath = isOldFormat ? dep.replace('.bmad-core/', '') : dep;
+          const targetDepPath = isOldFormat ? dep : `.bmad-core/${dep}`;
+
+          if (relativeDepPath.includes('*')) {
             // Handle glob patterns with {root} replacement
             const copiedFiles = await fileManager.copyGlobPattern(
-              dep.replace('.bmad-core/', ''),
+              relativeDepPath,
               sourceBase,
               path.join(installDir, '.bmad-core'),
               '.bmad-core',
@@ -292,11 +297,13 @@ class Installer {
             files.push(...copiedFiles.map((f) => `.bmad-core/${f}`));
           } else {
             // Handle single files with {root} replacement if needed
-            const sourcePath = path.join(sourceBase, dep.replace('.bmad-core/', ''));
-            const destinationPath = path.join(installDir, dep);
+            const sourcePath = path.join(sourceBase, relativeDepPath);
+            const destinationPath = path.join(installDir, targetDepPath);
 
             const needsRootReplacement =
-              dep.endsWith('.md') || dep.endsWith('.yaml') || dep.endsWith('.yml');
+              relativeDepPath.endsWith('.md') ||
+              relativeDepPath.endsWith('.yaml') ||
+              relativeDepPath.endsWith('.yml');
             let success = false;
 
             success = await (needsRootReplacement
@@ -304,7 +311,7 @@ class Installer {
               : fileManager.copyFile(sourcePath, destinationPath));
 
             if (success) {
-              files.push(dep);
+              files.push(targetDepPath);
             }
           }
         }
@@ -333,10 +340,15 @@ class Installer {
         for (const dep of teamDependencies) {
           spinner.text = `Copying team dependency: ${dep}`;
 
-          if (dep.includes('*')) {
+          // Handle both old format (.bmad-core/tasks/file.md) and new format (tasks/file.md)
+          const isOldFormat = dep.startsWith('.bmad-core/');
+          const relativeDepPath = isOldFormat ? dep.replace('.bmad-core/', '') : dep;
+          const targetDepPath = isOldFormat ? dep : `.bmad-core/${dep}`;
+
+          if (relativeDepPath.includes('*')) {
             // Handle glob patterns with {root} replacement
             const copiedFiles = await fileManager.copyGlobPattern(
-              dep.replace('.bmad-core/', ''),
+              relativeDepPath,
               sourceBase,
               path.join(installDir, '.bmad-core'),
               '.bmad-core',
@@ -344,11 +356,13 @@ class Installer {
             files.push(...copiedFiles.map((f) => `.bmad-core/${f}`));
           } else {
             // Handle single files with {root} replacement if needed
-            const sourcePath = path.join(sourceBase, dep.replace('.bmad-core/', ''));
-            const destinationPath = path.join(installDir, dep);
+            const sourcePath = path.join(sourceBase, relativeDepPath);
+            const destinationPath = path.join(installDir, targetDepPath);
 
             const needsRootReplacement =
-              dep.endsWith('.md') || dep.endsWith('.yaml') || dep.endsWith('.yml');
+              relativeDepPath.endsWith('.md') ||
+              relativeDepPath.endsWith('.yaml') ||
+              relativeDepPath.endsWith('.yml');
             let success = false;
 
             success = await (needsRootReplacement
@@ -356,7 +370,7 @@ class Installer {
               : fileManager.copyFile(sourcePath, destinationPath));
 
             if (success) {
-              files.push(dep);
+              files.push(targetDepPath);
             }
           }
         }
@@ -789,40 +803,99 @@ class Installer {
         // Skip the manifest file itself
         if (file.endsWith('install-manifest.yaml')) continue;
 
-        const relativePath = file.replace('.bmad-core/', '');
         const destinationPath = path.join(installDir, file);
+        let sourcePath = null;
+        let relativePath = null;
 
-        // Check if this is a common/ file that needs special processing
-        const commonBase = path.dirname(path.dirname(path.dirname(path.dirname(__filename))));
-        const commonSourcePath = path.join(commonBase, 'common', relativePath);
+        // Determine source path based on file location
+        if (file.startsWith('.bmad-core/')) {
+          // Core bmad files
+          relativePath = file.replace('.bmad-core/', '');
 
-        if (await fileManager.pathExists(commonSourcePath)) {
-          // This is a common/ file - needs template processing
-          const fs = require('node:fs').promises;
-          const content = await fs.readFile(commonSourcePath, 'utf8');
-          const updatedContent = content.replaceAll('{root}', '.bmad-core');
-          await fileManager.ensureDirectory(path.dirname(destinationPath));
-          await fs.writeFile(destinationPath, updatedContent, 'utf8');
-          spinner.text = `Restored: ${file}`;
-        } else {
-          // Regular file from bmad-core
-          const sourcePath = path.join(sourceBase, relativePath);
-          if (await fileManager.pathExists(sourcePath)) {
-            await fileManager.copyFile(sourcePath, destinationPath);
+          // Check if this is a common/ file that needs special processing
+          const commonBase = path.dirname(path.dirname(path.dirname(path.dirname(__filename))));
+          const commonSourcePath = path.join(commonBase, 'common', relativePath);
+
+          if (await fileManager.pathExists(commonSourcePath)) {
+            // This is a common/ file - needs template processing
+            const fs = require('node:fs').promises;
+            const content = await fs.readFile(commonSourcePath, 'utf8');
+            const updatedContent = content.replaceAll('{root}', '.bmad-core');
+            await fileManager.ensureDirectory(path.dirname(destinationPath));
+            await fs.writeFile(destinationPath, updatedContent, 'utf8');
             spinner.text = `Restored: ${file}`;
+            continue;
+          } else {
+            // Regular file from bmad-core
+            sourcePath = path.join(sourceBase, relativePath);
+          }
+        } else if (file.startsWith('.bmad-')) {
+          // Expansion pack files
+          const packMatch = file.match(/^\.([^/]+)/);
+          if (packMatch) {
+            const packId = packMatch[1];
+            relativePath = file.replace(`.${packId}/`, '');
 
-            // If this is a .yaml file, check for and remove corresponding .yml file
-            if (file.endsWith('.yaml')) {
-              const ymlFile = file.replace(/\.yaml$/, '.yml');
-              const ymlPath = path.join(installDir, ymlFile);
-              if (await fileManager.pathExists(ymlPath)) {
+            // First try in expansion-packs directory
+            const expansionPacksPath = resourceLocator.getExpansionPacksPath();
+            sourcePath = path.join(expansionPacksPath, packId, relativePath);
+
+            // If not found and it might be a common file, try common/
+            if (!(await fileManager.pathExists(sourcePath))) {
+              const commonBase = path.dirname(path.dirname(path.dirname(path.dirname(__filename))));
+              const commonSourcePath = path.join(commonBase, 'common', relativePath);
+
+              if (await fileManager.pathExists(commonSourcePath)) {
+                // This is a common/ file for expansion pack - needs template processing
                 const fs = require('node:fs').promises;
-                await fs.unlink(ymlPath);
-                console.log(chalk.dim(`  Removed legacy: ${ymlFile} (replaced by ${file})`));
+                const content = await fs.readFile(commonSourcePath, 'utf8');
+                const updatedContent = content.replaceAll('{root}', `.${packId}`);
+                await fileManager.ensureDirectory(path.dirname(destinationPath));
+                await fs.writeFile(destinationPath, updatedContent, 'utf8');
+                spinner.text = `Restored: ${file}`;
+                continue;
               }
             }
+          }
+        } else {
+          // Unexpected file format
+          console.warn(chalk.yellow(`  Warning: Unexpected file format: ${file}`));
+          continue;
+        }
+
+        // Attempt to restore the file from the determined source path
+        if (sourcePath && (await fileManager.pathExists(sourcePath))) {
+          const needsRootReplacement =
+            relativePath &&
+            (relativePath.endsWith('.md') ||
+              relativePath.endsWith('.yaml') ||
+              relativePath.endsWith('.yml'));
+
+          if (needsRootReplacement) {
+            const rootValue = file.startsWith('.bmad-core/')
+              ? '.bmad-core'
+              : file.match(/^\.([^/]+)/)?.[0];
+            await fileManager.copyFileWithRootReplacement(sourcePath, destinationPath, rootValue);
           } else {
-            console.warn(chalk.yellow(`  Warning: Source file not found: ${file}`));
+            await fileManager.copyFile(sourcePath, destinationPath);
+          }
+
+          spinner.text = `Restored: ${file}`;
+
+          // If this is a .yaml file, check for and remove corresponding .yml file
+          if (file.endsWith('.yaml')) {
+            const ymlFile = file.replace(/\.yaml$/, '.yml');
+            const ymlPath = path.join(installDir, ymlFile);
+            if (await fileManager.pathExists(ymlPath)) {
+              const fs = require('node:fs').promises;
+              await fs.unlink(ymlPath);
+              console.log(chalk.dim(`  Removed legacy: ${ymlFile} (replaced by ${file})`));
+            }
+          }
+        } else {
+          console.warn(chalk.yellow(`  Warning: Source file not found: ${file}`));
+          if (sourcePath) {
+            console.warn(chalk.dim(`    Attempted source path: ${sourcePath}`));
           }
         }
       }
@@ -1868,8 +1941,9 @@ class Installer {
         if (file.endsWith('install-manifest.yaml')) continue;
 
         const relativePath = file.replace(`.${packId}/`, '');
-        const sourcePath = path.join(pack.path, relativePath);
         const destinationPath = path.join(installDir, file);
+        let sourcePath = null;
+        let sourceFound = false;
 
         // Check if this is a common/ file that needs special processing
         const commonBase = path.dirname(path.dirname(path.dirname(path.dirname(__filename))));
@@ -1883,12 +1957,36 @@ class Installer {
           await fileManager.ensureDirectory(path.dirname(destinationPath));
           await fs.writeFile(destinationPath, updatedContent, 'utf8');
           spinner.text = `Restored: ${file}`;
-        } else if (await fileManager.pathExists(sourcePath)) {
-          // Regular file from expansion pack
-          await fileManager.copyFile(sourcePath, destinationPath);
-          spinner.text = `Restored: ${file}`;
+          sourceFound = true;
         } else {
+          // Try regular expansion pack source
+          sourcePath = path.join(pack.path, relativePath);
+          if (await fileManager.pathExists(sourcePath)) {
+            const needsRootReplacement =
+              relativePath.endsWith('.md') ||
+              relativePath.endsWith('.yaml') ||
+              relativePath.endsWith('.yml');
+
+            if (needsRootReplacement) {
+              await fileManager.copyFileWithRootReplacement(
+                sourcePath,
+                destinationPath,
+                `.${packId}`,
+              );
+            } else {
+              await fileManager.copyFile(sourcePath, destinationPath);
+            }
+            spinner.text = `Restored: ${file}`;
+            sourceFound = true;
+          }
+        }
+
+        if (!sourceFound) {
           console.warn(chalk.yellow(`  Warning: Source file not found: ${file}`));
+          if (sourcePath) {
+            console.warn(chalk.dim(`    Attempted source path: ${sourcePath}`));
+          }
+          console.warn(chalk.dim(`    Attempted common path: ${commonSourcePath}`));
         }
       }
 

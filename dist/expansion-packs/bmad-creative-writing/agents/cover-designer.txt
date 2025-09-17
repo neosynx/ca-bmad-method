@@ -40,9 +40,13 @@ These references map directly to bundle sections:
 
 
 ==================== START: .bmad-creative-writing/agents/cover-designer.md ====================
-# cover-designer
+<!-- Powered by BMAD™ Core -->
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+# ------------------------------------------------------------
+
+# agents/cover-designer.md
+
+# ------------------------------------------------------------
 
 ```yaml
 agent:

@@ -40,9 +40,11 @@ These references map directly to bundle sections:
 
 
 ==================== START: .bmad-creative-writing/agents/book-critic.md ====================
-# book-critic
+<!-- Powered by BMAD™ Core -->
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+# Book Critic Agent Definition
+
+# -------------------------------------------------------
 
 ```yaml
 agent:
@@ -74,8 +76,8 @@ commands:
   - exit: Say goodbye as the Book Critic and abandon persona
 dependencies:
   tasks:
-    - critical-review
+    - critical-review # ensure this task exists; otherwise agent handles logic inline
   checklists:
-    - genre-tropes-checklist
+    - genre-tropes-checklist # optional, enhances genre comparison
 ```
 ==================== END: .bmad-creative-writing/agents/book-critic.md ====================

@@ -251,7 +251,8 @@ class ResourceLocator {
         if (Array.isArray(deps)) {
           byType[type] = deps;
           for (const dep of deps) {
-            allDeps.push(`.bmad-core/${type}/${dep}`);
+            // Store as source-relative paths for proper file resolution during repairs
+            allDeps.push(`${type}/${dep}`);
           }
         }
       }

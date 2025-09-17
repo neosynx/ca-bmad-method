@@ -63,19 +63,41 @@ workflows:
 ==================== END: .bmad-creative-writing/agent-teams/agent-team.yaml ====================
 
 ==================== START: .bmad-creative-writing/agents/bmad-orchestrator.md ====================
-# bmad-orchestrator
+<!-- Powered by BMAD™ Core -->
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+# BMad Web Orchestrator
+
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-creative-writing/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-creative-writing/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Load and read `.bmad-core/core-config.yaml` (project configuration) before any greeting
+  - STEP 4: Greet user with your name/role and immediately run `*help` to display available commands
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - Announce: Introduce yourself as the BMad Orchestrator, explain you can coordinate agents and workflows
+  - IMPORTANT: Tell users that all commands start with * (e.g., `*help`, `*agent`, `*workflow`)
   - Assess user goal against available agents and workflows in this bundle
   - If clear match to an agent's expertise, suggest transformation with *agent command
   - If project-oriented, suggest *workflow-guidance to explore options
+  - Load resources only when needed - never pre-load (Exception: Read `.bmad-core/core-config.yaml` during activation)
+  - CRITICAL: On activation, ONLY greet user, auto-run `*help`, and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: BMad Orchestrator
   id: bmad-orchestrator
@@ -97,7 +119,7 @@ persona:
     - Always use numbered lists for choices
     - Process commands starting with * immediately
     - Always remind users that commands require * prefix
-commands:
+commands: # All commands require * prefix when used (e.g., *help, *agent pm)
   help: Show this guide with available agents and workflows
   agent: Transform into a specialized agent (list if name not specified)
   chat-mode: Start conversational mode for detailed assistance
@@ -149,6 +171,7 @@ help-display-template: |
     Purpose: {description}]
 
   💡 Tip: Each agent has unique tasks, templates, and checklists. Switch to an agent to access their capabilities!
+
 fuzzy-matching:
   - 85% confidence threshold
   - Show numbered list if unsure
@@ -171,7 +194,7 @@ workflow-guidance:
   - Understand each workflow's purpose, options, and decision points
   - Ask clarifying questions based on the workflow's structure
   - Guide users through workflow selection when multiple options exist
-  - When appropriate, suggest: Would you like me to create a detailed workflow plan before starting?
+  - When appropriate, suggest: 'Would you like me to create a detailed workflow plan before starting?'
   - For workflows with divergent paths, help users choose the right path
   - Adapt questions to the specific domain (e.g., game dev vs infrastructure vs web dev)
   - Only recommend workflows that actually exist in the current bundle
@@ -190,16 +213,37 @@ dependencies:
 ==================== END: .bmad-creative-writing/agents/bmad-orchestrator.md ====================
 
 ==================== START: .bmad-creative-writing/agents/plot-architect.md ====================
+<!-- Powered by BMAD™ Core -->
+
 # plot-architect
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-creative-writing/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-creative-writing/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Plot Architect
   id: plot-architect
@@ -267,16 +311,37 @@ Remember to present all options as numbered lists for easy selection.
 ==================== END: .bmad-creative-writing/agents/plot-architect.md ====================
 
 ==================== START: .bmad-creative-writing/agents/character-psychologist.md ====================
+<!-- Powered by BMAD™ Core -->
+
 # character-psychologist
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-creative-writing/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-creative-writing/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Character Psychologist
   id: character-psychologist
@@ -342,16 +407,37 @@ Remember to present all options as numbered lists for easy selection.
 ==================== END: .bmad-creative-writing/agents/character-psychologist.md ====================
 
 ==================== START: .bmad-creative-writing/agents/world-builder.md ====================
+<!-- Powered by BMAD™ Core -->
+
 # world-builder
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-creative-writing/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-creative-writing/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: World Builder
   id: world-builder
@@ -418,16 +504,37 @@ Remember to present all options as numbered lists for easy selection.
 ==================== END: .bmad-creative-writing/agents/world-builder.md ====================
 
 ==================== START: .bmad-creative-writing/agents/editor.md ====================
+<!-- Powered by BMAD™ Core -->
+
 # editor
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-creative-writing/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-creative-writing/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Editor
   id: editor
@@ -493,16 +600,37 @@ Remember to present all options as numbered lists for easy selection.
 ==================== END: .bmad-creative-writing/agents/editor.md ====================
 
 ==================== START: .bmad-creative-writing/agents/beta-reader.md ====================
+<!-- Powered by BMAD™ Core -->
+
 # beta-reader
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-creative-writing/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-creative-writing/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Beta Reader
   id: beta-reader
@@ -569,16 +697,37 @@ Remember to present all options as numbered lists for easy selection.
 ==================== END: .bmad-creative-writing/agents/beta-reader.md ====================
 
 ==================== START: .bmad-creative-writing/agents/dialog-specialist.md ====================
+<!-- Powered by BMAD™ Core -->
+
 # dialog-specialist
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-creative-writing/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-creative-writing/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Dialog Specialist
   id: dialog-specialist
@@ -643,16 +792,37 @@ Remember to present all options as numbered lists for easy selection.
 ==================== END: .bmad-creative-writing/agents/dialog-specialist.md ====================
 
 ==================== START: .bmad-creative-writing/agents/narrative-designer.md ====================
+<!-- Powered by BMAD™ Core -->
+
 # narrative-designer
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-creative-writing/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-creative-writing/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Narrative Designer
   id: narrative-designer
@@ -718,16 +888,37 @@ Remember to present all options as numbered lists for easy selection.
 ==================== END: .bmad-creative-writing/agents/narrative-designer.md ====================
 
 ==================== START: .bmad-creative-writing/agents/genre-specialist.md ====================
+<!-- Powered by BMAD™ Core -->
+
 # genre-specialist
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-creative-writing/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-creative-writing/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Genre Specialist
   id: genre-specialist
@@ -795,9 +986,11 @@ Remember to present all options as numbered lists for easy selection.
 ==================== END: .bmad-creative-writing/agents/genre-specialist.md ====================
 
 ==================== START: .bmad-creative-writing/agents/book-critic.md ====================
-# book-critic
+<!-- Powered by BMAD™ Core -->
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+# Book Critic Agent Definition
+
+# -------------------------------------------------------
 
 ```yaml
 agent:
@@ -829,14 +1022,15 @@ commands:
   - exit: Say goodbye as the Book Critic and abandon persona
 dependencies:
   tasks:
-    - critical-review
+    - critical-review # ensure this task exists; otherwise agent handles logic inline
   checklists:
-    - genre-tropes-checklist
+    - genre-tropes-checklist # optional, enhances genre comparison
 ```
 ==================== END: .bmad-creative-writing/agents/book-critic.md ====================
 
 ==================== START: .bmad-creative-writing/data/bmad-kb.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # BMad Creative Writing Knowledge Base
 
 ## Overview
@@ -1048,6 +1242,7 @@ Remember: BMad Creative Writing provides structure to liberate creativity, not c
 
 ==================== START: .bmad-creative-writing/data/elicitation-methods.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Elicitation Methods Data
 
 ## Core Reflective Methods
@@ -1206,6 +1401,7 @@ Remember: BMad Creative Writing provides structure to liberate creativity, not c
 
 ==================== START: .bmad-creative-writing/tasks/advanced-elicitation.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Advanced Elicitation Task
 
 ## Purpose
@@ -1327,6 +1523,7 @@ Choose a number (0-8) or 9 to proceed:
 
 ==================== START: .bmad-creative-writing/tasks/create-doc.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Document from Template (YAML Driven)
 
 ## ⚠️ CRITICAL EXECUTION NOTICE ⚠️
@@ -1432,6 +1629,7 @@ User can type `#yolo` to toggle to YOLO mode (process all sections at once).
 
 ==================== START: .bmad-creative-writing/tasks/kb-mode-interaction.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # KB Mode Interaction Task
 
 ## Purpose
@@ -1511,6 +1709,7 @@ Or ask me about anything else related to BMad-Method!
 
 ==================== START: .bmad-creative-writing/utils/workflow-management.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Workflow Management
 
 Enables BMad orchestrator to manage and execute team workflows.
@@ -1581,1497 +1780,6 @@ Handle conditional paths by asking clarifying questions when needed.
 
 Agents should be workflow-aware: know active workflow, their role, access artifacts, understand expected outputs.
 ==================== END: .bmad-creative-writing/utils/workflow-management.md ====================
-
-==================== START: .bmad-creative-writing/tasks/analyze-story-structure.md ====================
-<!-- Powered by BMAD™ Core -->
-# Analyze Story Structure
-
-## Purpose
-
-Perform comprehensive structural analysis of a narrative work to identify strengths, weaknesses, and improvement opportunities.
-
-## Process
-
-### 1. Identify Structure Type
-
-- Three-act structure
-- Five-act structure
-- Hero's Journey
-- Save the Cat beats
-- Freytag's Pyramid
-- Kishōtenketsu
-- In medias res
-- Non-linear/experimental
-
-### 2. Map Key Points
-
-- **Opening**: Hook, world establishment, character introduction
-- **Inciting Incident**: What disrupts the status quo?
-- **Plot Point 1**: What locks in the conflict?
-- **Midpoint**: What reversal/revelation occurs?
-- **Plot Point 2**: What raises stakes to maximum?
-- **Climax**: How does central conflict resolve?
-- **Resolution**: What new equilibrium emerges?
-
-### 3. Analyze Pacing
-
-- Scene length distribution
-- Tension escalation curve
-- Breather moment placement
-- Action/reflection balance
-- Chapter break effectiveness
-
-### 4. Evaluate Setup/Payoff
-
-- Track all setups (promises to reader)
-- Verify each has satisfying payoff
-- Identify orphaned setups
-- Find unsupported payoffs
-- Check Chekhov's guns
-
-### 5. Assess Subplot Integration
-
-- List all subplots
-- Track intersection with main plot
-- Evaluate resolution satisfaction
-- Check thematic reinforcement
-
-### 6. Generate Report
-
-Create structural report including:
-
-- Structure diagram
-- Pacing chart
-- Problem areas
-- Suggested fixes
-- Alternative structures
-
-## Output
-
-Comprehensive structural analysis with actionable recommendations
-==================== END: .bmad-creative-writing/tasks/analyze-story-structure.md ====================
-
-==================== START: .bmad-creative-writing/tasks/execute-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# Checklist Validation Task
-
-This task provides instructions for validating documentation against checklists. The agent MUST follow these instructions to ensure thorough and systematic validation of documents.
-
-## Available Checklists
-
-If the user asks or does not specify a specific checklist, list the checklists available to the agent persona. If the task is being run not with a specific agent, tell the user to check the .bmad-creative-writing/checklists folder to select the appropriate one to run.
-
-## Instructions
-
-1. **Initial Assessment**
-   - If user or the task being run provides a checklist name:
-     - Try fuzzy matching (e.g. "plot checklist" -> "plot-structure-checklist")
-     - If multiple matches found, ask user to clarify
-     - Load the appropriate checklist from .bmad-creative-writing/checklists/
-   - If no checklist specified:
-     - Ask the user which checklist they want to use
-     - Present the available options from the files in the checklists folder
-   - Confirm if they want to work through the checklist:
-     - Section by section (interactive mode - very time consuming)
-     - All at once (YOLO mode - recommended for checklists, there will be a summary of sections at the end to discuss)
-
-2. **Document and Artifact Gathering**
-   - Each checklist will specify its required documents/artifacts at the beginning
-   - Follow the checklist's specific instructions for what to gather, generally a file can be resolved in the docs folder, if not or unsure, halt and ask or confirm with the user.
-
-3. **Checklist Processing**
-
-   If in interactive mode:
-   - Work through each section of the checklist one at a time
-   - For each section:
-     - Review all items in the section following instructions for that section embedded in the checklist
-     - Check each item against the relevant documentation or artifacts as appropriate
-     - Present summary of findings for that section, highlighting warnings, errors and non applicable items (rationale for non-applicability).
-     - Get user confirmation before proceeding to next section or if any thing major do we need to halt and take corrective action
-
-   If in YOLO mode:
-   - Process all sections at once
-   - Create a comprehensive report of all findings
-   - Present the complete analysis to the user
-
-4. **Validation Approach**
-
-   For each checklist item:
-   - Read and understand the requirement
-   - Look for evidence in the documentation that satisfies the requirement
-   - Consider both explicit mentions and implicit coverage
-   - Aside from this, follow all checklist llm instructions
-   - Mark items as:
-     - ✅ PASS: Requirement clearly met
-     - ❌ FAIL: Requirement not met or insufficient coverage
-     - ⚠️ PARTIAL: Some aspects covered but needs improvement
-     - N/A: Not applicable to this case
-
-5. **Section Analysis**
-
-   For each section:
-   - think step by step to calculate pass rate
-   - Identify common themes in failed items
-   - Provide specific recommendations for improvement
-   - In interactive mode, discuss findings with user
-   - Document any user decisions or explanations
-
-6. **Final Report**
-
-   Prepare a summary that includes:
-   - Overall checklist completion status
-   - Pass rates by section
-   - List of failed items with context
-   - Specific recommendations for improvement
-   - Any sections or items marked as N/A with justification
-
-## Checklist Execution Methodology
-
-Each checklist now contains embedded LLM prompts and instructions that will:
-
-1. **Guide thorough thinking** - Prompts ensure deep analysis of each section
-2. **Request specific artifacts** - Clear instructions on what documents/access is needed
-3. **Provide contextual guidance** - Section-specific prompts for better validation
-4. **Generate comprehensive reports** - Final summary with detailed findings
-
-The LLM will:
-
-- Execute the complete checklist validation
-- Present a final report with pass/fail rates and key findings
-- Offer to provide detailed analysis of any section, especially those with warnings or failures
-==================== END: .bmad-creative-writing/tasks/execute-checklist.md ====================
-
-==================== START: .bmad-creative-writing/templates/story-outline-tmpl.yaml ====================
-# <!-- Powered by BMAD™ Core -->
----
-template:
-  id: story-outline
-  name: Story Outline Template
-  version: 1.0
-  description: Comprehensive outline for narrative works
-  output:
-    format: markdown
-    filename: "{{title}}-outline.md"
-
-workflow:
-  elicitation: true
-  allow_skip: false
-sections:
-  - id: overview
-    title: Story Overview
-    instruction: |
-      Create high-level story summary including:
-      - Premise in one sentence
-      - Core conflict
-      - Genre and tone
-      - Target audience
-      - Unique selling proposition
-  - id: structure
-    title: Three-Act Structure
-    subsections:
-      - id: act1
-        title: Act 1 - Setup
-        instruction: |
-          Detail Act 1 including:
-          - Opening image/scene
-          - World establishment
-          - Character introductions
-          - Inciting incident
-          - Debate/refusal
-          - Break into Act 2
-        elicit: true
-      - id: act2a
-        title: Act 2A - Fun and Games
-        instruction: |
-          Map first half of Act 2:
-          - Promise of premise delivery
-          - B-story introduction
-          - Rising complications
-          - Midpoint approach
-        elicit: true
-      - id: act2b
-        title: Act 2B - Raising Stakes
-        instruction: |
-          Map second half of Act 2:
-          - Midpoint reversal
-          - Stakes escalation
-          - Bad guys close in
-          - All is lost moment
-          - Dark night of the soul
-        elicit: true
-      - id: act3
-        title: Act 3 - Resolution
-        instruction: |
-          Design climax and resolution:
-          - Break into Act 3
-          - Climax preparation
-          - Final confrontation
-          - Resolution
-          - Final image
-        elicit: true
-  - id: characters
-    title: Character Arcs
-    instruction: |
-      Map transformation arcs for main characters:
-      - Starting point (flaws/wounds)
-      - Catalyst for change
-      - Resistance/setbacks
-      - Breakthrough moment
-      - End state (growth achieved)
-    elicit: true
-  - id: themes
-    title: Themes & Meaning
-    instruction: |
-      Identify thematic elements:
-      - Central theme/question
-      - How plot explores theme
-      - Character relationships to theme
-      - Symbolic representations
-      - Thematic resolution
-  - id: scenes
-    title: Scene Breakdown
-    instruction: |
-      Create scene-by-scene outline with:
-      - Scene purpose (advance plot/character)
-      - Key events
-      - Emotional trajectory
-      - Hook/cliffhanger
-    repeatable: true
-    elicit: true
-==================== END: .bmad-creative-writing/templates/story-outline-tmpl.yaml ====================
-
-==================== START: .bmad-creative-writing/templates/premise-brief-tmpl.yaml ====================
-# <!-- Powered by BMAD™ Core -->
----
-template:
-  id: premise-brief-tmpl
-  name: Premise Brief
-  version: 1.0
-  description: One-page document expanding a 1-sentence idea into a paragraph with stakes
-  output:
-    format: markdown
-    filename: "{{title}}-premise.md"
-
-workflow:
-  elicitation: true
-  allow_skip: false
-
-sections:
-  - id: one_sentence
-    title: One-Sentence Summary
-    instruction: |
-      Create a compelling one-sentence summary that captures:
-      - The protagonist
-      - The central conflict
-      - The stakes
-      Example: "When [inciting incident], [protagonist] must [goal] or else [stakes]."
-    elicit: true
-
-  - id: expanded_paragraph
-    title: Expanded Paragraph
-    instruction: |
-      Expand the premise into a full paragraph (5-7 sentences) including:
-      - Setup and world context
-      - Protagonist introduction
-      - Inciting incident
-      - Central conflict
-      - Stakes and urgency
-      - Hint at resolution path
-    elicit: true
-
-  - id: protagonist
-    title: Protagonist Profile
-    instruction: |
-      Define the main character:
-      - Name and role
-      - Core desire/goal
-      - Internal conflict
-      - What makes them unique
-      - Why readers will care
-    elicit: true
-
-  - id: antagonist
-    title: Antagonist/Opposition
-    instruction: |
-      Define the opposing force:
-      - Nature of opposition (person, society, nature, self)
-      - Antagonist's goal
-      - Why they oppose protagonist
-      - Their power/advantage
-    elicit: true
-
-  - id: stakes
-    title: Stakes
-    instruction: |
-      Clarify what's at risk:
-      - Personal stakes for protagonist
-      - Broader implications
-      - Ticking clock element
-      - Consequences of failure
-    elicit: true
-
-  - id: unique_hook
-    title: Unique Hook
-    instruction: |
-      What makes this story special:
-      - Fresh angle or twist
-      - Unique world element
-      - Unexpected character aspect
-      - Genre-blending elements
-    elicit: true
-==================== END: .bmad-creative-writing/templates/premise-brief-tmpl.yaml ====================
-
-==================== START: .bmad-creative-writing/templates/scene-list-tmpl.yaml ====================
-# <!-- Powered by BMAD™ Core -->
----
-template:
-  id: scene-list-tmpl
-  name: Scene List
-  version: 1.0
-  description: Table summarizing every scene for outlining phase
-  output:
-    format: markdown
-    filename: "{{title}}-scene-list.md"
-
-workflow:
-  elicitation: true
-  allow_skip: false
-
-sections:
-  - id: overview
-    title: Scene List Overview
-    instruction: |
-      Create overview of scene structure:
-      - Total number of scenes
-      - Act breakdown
-      - Pacing considerations
-      - Key turning points
-    elicit: true
-
-  - id: scenes
-    title: Scene Details
-    instruction: |
-      For each scene, define:
-      - Scene number and title
-      - POV character
-      - Setting (time and place)
-      - Scene goal
-      - Conflict/obstacle
-      - Outcome/disaster
-      - Emotional arc
-      - Hook for next scene
-    repeatable: true
-    elicit: true
-    sections:
-      - id: scene_entry
-        title: "Scene {{scene_number}}: {{scene_title}}"
-        template: |
-          **POV:** {{pov_character}}
-          **Setting:** {{time_place}}
-
-          **Goal:** {{scene_goal}}
-          **Conflict:** {{scene_conflict}}
-          **Outcome:** {{scene_outcome}}
-
-          **Emotional Arc:** {{emotional_journey}}
-          **Hook:** {{next_scene_hook}}
-
-          **Notes:** {{additional_notes}}
-==================== END: .bmad-creative-writing/templates/scene-list-tmpl.yaml ====================
-
-==================== START: .bmad-creative-writing/templates/chapter-draft-tmpl.yaml ====================
-# <!-- Powered by BMAD™ Core -->
----
-template:
-  id: chapter-draft-tmpl
-  name: Chapter Draft
-  version: 1.0
-  description: Guided structure for writing a full chapter
-  output:
-    format: markdown
-    filename: "chapter-{{chapter_number}}.md"
-
-workflow:
-  elicitation: true
-  allow_skip: false
-
-sections:
-  - id: chapter_header
-    title: Chapter Header
-    instruction: |
-      Define chapter metadata:
-      - Chapter number
-      - Chapter title
-      - POV character
-      - Timeline/date
-      - Word count target
-    elicit: true
-
-  - id: opening_hook
-    title: Opening Hook
-    instruction: |
-      Create compelling opening (1-2 paragraphs):
-      - Grab reader attention
-      - Establish scene setting
-      - Connect to previous chapter
-      - Set chapter tone
-      - Introduce chapter conflict
-    elicit: true
-
-  - id: rising_action
-    title: Rising Action
-    instruction: |
-      Develop the chapter body:
-      - Build tension progressively
-      - Develop character interactions
-      - Advance plot threads
-      - Include sensory details
-      - Balance dialogue and narrative
-      - Create mini-conflicts
-    elicit: true
-
-  - id: climax_turn
-    title: Climax/Turning Point
-    instruction: |
-      Create chapter peak moment:
-      - Major revelation or decision
-      - Conflict confrontation
-      - Emotional high point
-      - Plot twist or reversal
-      - Character growth moment
-    elicit: true
-
-  - id: resolution
-    title: Resolution/Cliffhanger
-    instruction: |
-      End chapter effectively:
-      - Resolve immediate conflict
-      - Set up next chapter
-      - Leave question or tension
-      - Emotional resonance
-      - Page-turner element
-    elicit: true
-
-  - id: dialogue_review
-    title: Dialogue Review
-    instruction: |
-      Review and enhance dialogue:
-      - Character voice consistency
-      - Subtext and tension
-      - Natural flow
-      - Action beats
-      - Dialect/speech patterns
-    elicit: true
-==================== END: .bmad-creative-writing/templates/chapter-draft-tmpl.yaml ====================
-
-==================== START: .bmad-creative-writing/checklists/plot-structure-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# Plot Structure Checklist
-
-## Opening
-
-- [ ] Hook engages within first page
-- [ ] Genre/tone established early
-- [ ] World rules clear
-- [ ] Protagonist introduced memorably
-- [ ] Status quo established before disruption
-
-## Structure Fundamentals
-
-- [ ] Inciting incident by 10-15% mark
-- [ ] Clear story question posed
-- [ ] Stakes established and clear
-- [ ] Protagonist commits to journey
-- [ ] B-story provides thematic counterpoint
-
-## Rising Action
-
-- [ ] Complications escalate logically
-- [ ] Try-fail cycles build tension
-- [ ] Subplots weave with main plot
-- [ ] False victories/defeats included
-- [ ] Character growth parallels plot
-
-## Midpoint
-
-- [ ] Major reversal or revelation
-- [ ] Stakes raised significantly
-- [ ] Protagonist approach shifts
-- [ ] Time pressure introduced/increased
-- [ ] Point of no return crossed
-
-## Crisis Building
-
-- [ ] Bad guys close in (internal/external)
-- [ ] Protagonist plans fail
-- [ ] Allies fall away/betray
-- [ ] All seems lost moment
-- [ ] Dark night of soul (character lowest)
-
-## Climax
-
-- [ ] Protagonist must act (no rescue)
-- [ ] Uses lessons learned
-- [ ] Internal/external conflicts merge
-- [ ] Highest stakes moment
-- [ ] Clear win/loss/transformation
-
-## Resolution
-
-- [ ] New equilibrium established
-- [ ] Loose threads tied
-- [ ] Character growth demonstrated
-- [ ] Thematic statement clear
-- [ ] Emotional satisfaction delivered
-==================== END: .bmad-creative-writing/checklists/plot-structure-checklist.md ====================
-
-==================== START: .bmad-creative-writing/data/story-structures.md ====================
-<!-- Powered by BMAD™ Core -->
-# Story Structure Patterns
-
-## Three-Act Structure
-
-- **Act 1 (25%)**: Setup, inciting incident
-- **Act 2 (50%)**: Confrontation, complications
-- **Act 3 (25%)**: Resolution
-
-## Save the Cat Beats
-
-1. Opening Image (0-1%)
-2. Setup (1-10%)
-3. Theme Stated (5%)
-4. Catalyst (10%)
-5. Debate (10-20%)
-6. Break into Two (20%)
-7. B Story (22%)
-8. Fun and Games (20-50%)
-9. Midpoint (50%)
-10. Bad Guys Close In (50-75%)
-11. All Is Lost (75%)
-12. Dark Night of Soul (75-80%)
-13. Break into Three (80%)
-14. Finale (80-99%)
-15. Final Image (99-100%)
-
-## Hero's Journey
-
-1. Ordinary World
-2. Call to Adventure
-3. Refusal of Call
-4. Meeting Mentor
-5. Crossing Threshold
-6. Tests, Allies, Enemies
-7. Approach to Cave
-8. Ordeal
-9. Reward
-10. Road Back
-11. Resurrection
-12. Return with Elixir
-
-## Seven-Point Structure
-
-1. Hook
-2. Plot Turn 1
-3. Pinch Point 1
-4. Midpoint
-5. Pinch Point 2
-6. Plot Turn 2
-7. Resolution
-
-## Freytag's Pyramid
-
-1. Exposition
-2. Rising Action
-3. Climax
-4. Falling Action
-5. Denouement
-
-## Kishōtenketsu (Japanese)
-
-- **Ki**: Introduction
-- **Shō**: Development
-- **Ten**: Twist
-- **Ketsu**: Conclusion
-==================== END: .bmad-creative-writing/data/story-structures.md ====================
-
-==================== START: .bmad-creative-writing/tasks/develop-character.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 3. Develop Character
-
-# ------------------------------------------------------------
-
----
-
-task:
-id: develop-character
-name: Develop Character
-description: Produce rich character profiles with goals, flaws, arcs, and voice notes.
-persona_default: character-psychologist
-inputs:
-
-- concept-brief.md
-  steps:
-- Identify protagonist(s), antagonist(s), key side characters.
-- For each, fill character-profile-tmpl.
-- Offer advanced‑elicitation for each profile.
-  output: characters.md
-  ...
-==================== END: .bmad-creative-writing/tasks/develop-character.md ====================
-
-==================== START: .bmad-creative-writing/tasks/workshop-dialog.md ====================
-<!-- Powered by BMAD™ Core -->
-# Workshop Dialog
-
-## Purpose
-
-Refine dialog for authenticity, character voice, and dramatic effectiveness.
-
-## Process
-
-### 1. Voice Audit
-
-For each character, assess:
-
-- Vocabulary level and word choice
-- Sentence structure preferences
-- Speech rhythms and patterns
-- Catchphrases or verbal tics
-- Educational/cultural markers
-- Emotional expression style
-
-### 2. Subtext Analysis
-
-For each exchange:
-
-- What's being said directly
-- What's really being communicated
-- Power dynamics at play
-- Emotional undercurrents
-- Character objectives
-- Obstacles to directness
-
-### 3. Flow Enhancement
-
-- Remove unnecessary dialogue tags
-- Vary attribution methods
-- Add action beats
-- Incorporate silence/pauses
-- Balance dialog with narrative
-- Ensure natural interruptions
-
-### 4. Conflict Injection
-
-Where dialog lacks tension:
-
-- Add opposing goals
-- Insert misunderstandings
-- Create subtext conflicts
-- Use indirect responses
-- Build through escalation
-- Add environmental pressure
-
-### 5. Polish Pass
-
-- Read aloud for rhythm
-- Check period authenticity
-- Verify character consistency
-- Eliminate on-the-nose dialog
-- Strengthen opening/closing lines
-- Add distinctive character markers
-
-## Output
-
-Refined dialog with stronger voices and dramatic impact
-==================== END: .bmad-creative-writing/tasks/workshop-dialog.md ====================
-
-==================== START: .bmad-creative-writing/tasks/character-depth-pass.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 9. Character Depth Pass
-
-# ------------------------------------------------------------
-
----
-
-task:
-id: character-depth-pass
-name: Character Depth Pass
-description: Enrich character profiles with backstory and arc details.
-persona_default: character-psychologist
-inputs:
-
-- character-summaries.md
-  steps:
-- For each character, add formative events, internal conflicts, arc milestones.
-  output: characters.md
-  ...
-==================== END: .bmad-creative-writing/tasks/character-depth-pass.md ====================
-
-==================== START: .bmad-creative-writing/templates/character-profile-tmpl.yaml ====================
-# <!-- Powered by BMAD™ Core -->
----
-template:
-  id: character-profile
-  name: Character Profile Template
-  version: 1.0
-  description: Deep character development worksheet
-  output:
-    format: markdown
-    filename: "{{character_name}}-profile.md"
-
-workflow:
-  elicitation: true
-  allow_skip: false
-sections:
-  - id: basics
-    title: Basic Information
-    instruction: |
-      Create character foundation:
-      - Full name and nicknames
-      - Age and birthday
-      - Physical description
-      - Occupation/role
-      - Social status
-      - First impression
-  - id: psychology
-    title: Psychological Profile
-    instruction: |
-      Develop internal landscape:
-      - Core wound/ghost
-      - Lie they believe
-      - Want (external goal)
-      - Need (internal growth)
-      - Fear (greatest)
-      - Personality type/temperament
-      - Defense mechanisms
-    elicit: true
-  - id: backstory
-    title: Backstory
-    instruction: |
-      Create formative history:
-      - Family dynamics
-      - Defining childhood event
-      - Education/training
-      - Past relationships
-      - Failures and successes
-      - Secrets held
-    elicit: true
-  - id: voice
-    title: Voice & Dialog
-    instruction: |
-      Define speaking patterns:
-      - Vocabulary level
-      - Speech rhythm
-      - Favorite phrases
-      - Topics they avoid
-      - How they argue
-      - Humor style
-      - Three sample lines
-    elicit: true
-  - id: relationships
-    title: Relationships
-    instruction: |
-      Map connections:
-      - Family relationships
-      - Romantic history/interests
-      - Friends and allies
-      - Enemies and rivals
-      - Mentor figures
-      - Power dynamics
-  - id: arc
-    title: Character Arc
-    instruction: |
-      Design transformation:
-      - Starting state
-      - Inciting incident impact
-      - Resistance to change
-      - Turning points
-      - Dark moment
-      - Breakthrough
-      - End state
-    elicit: true
-  - id: details
-    title: Unique Details
-    instruction: |
-      Add memorable specifics:
-      - Habits and mannerisms
-      - Prized possessions
-      - Daily routine
-      - Pet peeves
-      - Hidden talents
-      - Contradictions
-==================== END: .bmad-creative-writing/templates/character-profile-tmpl.yaml ====================
-
-==================== START: .bmad-creative-writing/checklists/character-consistency-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 1. Character Consistency Checklist
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: character-consistency-checklist
-name: Character Consistency Checklist
-description: Verify character details and voice remain consistent throughout the manuscript.
-items:
-
-- "[ ] Names spelled consistently (incl. diacritics)"
-- "[ ] Physical descriptors match across chapters"
-- "[ ] Goals and motivations do not contradict earlier scenes"
-- "[ ] Character voice (speech patterns, vocabulary) is uniform"
-- "[ ] Relationships and histories align with timeline"
-- "[ ] Internal conflict/arc progression is logical"
-  ...
-==================== END: .bmad-creative-writing/checklists/character-consistency-checklist.md ====================
-
-==================== START: .bmad-creative-writing/tasks/build-world.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 2. Build World
-
-# ------------------------------------------------------------
-
----
-
-task:
-id: build-world
-name: Build World
-description: Create a concise world guide covering geography, cultures, magic/tech, and history.
-persona_default: world-builder
-inputs:
-
-- concept-brief.md
-  steps:
-- Summarize key themes from concept.
-- Draft World Guide using world-guide-tmpl.
-- Execute tasks#advanced-elicitation.
-  output: world-guide.md
-  ...
-==================== END: .bmad-creative-writing/tasks/build-world.md ====================
-
-==================== START: .bmad-creative-writing/templates/world-guide-tmpl.yaml ====================
-# <!-- Powered by BMAD™ Core -->
----
-template:
-  id: world-guide-tmpl
-  name: World Guide
-  version: 1.0
-  description: Structured document for geography, cultures, magic systems, and history
-  output:
-    format: markdown
-    filename: "{{world_name}}-world-guide.md"
-
-workflow:
-  elicitation: true
-  allow_skip: false
-
-sections:
-  - id: overview
-    title: World Overview
-    instruction: |
-      Create comprehensive world overview including:
-      - World name and type (fantasy, sci-fi, etc.)
-      - Overall tone and atmosphere
-      - Technology/magic level
-      - Time period equivalent
-
-  - id: geography
-    title: Geography
-    instruction: |
-      Define the physical world:
-      - Continents and regions
-      - Key landmarks and natural features
-      - Climate zones
-      - Important cities/settlements
-    elicit: true
-
-  - id: cultures
-    title: Cultures & Factions
-    instruction: |
-      Detail cultures and factions:
-      - Name and description
-      - Core values and beliefs
-      - Leadership structure
-      - Relationships with other groups
-      - Conflicts and tensions
-    repeatable: true
-    elicit: true
-
-  - id: magic_technology
-    title: Magic/Technology System
-    instruction: |
-      Define the world's special systems:
-      - Source of power/technology
-      - How it works
-      - Who can use it
-      - Limitations and costs
-      - Impact on society
-    elicit: true
-
-  - id: history
-    title: Historical Timeline
-    instruction: |
-      Create key historical events:
-      - Founding events
-      - Major wars/conflicts
-      - Golden ages
-      - Disasters/cataclysms
-      - Recent history
-    elicit: true
-
-  - id: economics
-    title: Economics & Trade
-    instruction: |
-      Define economic systems:
-      - Currency and trade
-      - Major resources
-      - Trade routes
-      - Economic disparities
-    elicit: true
-
-  - id: religion
-    title: Religion & Mythology
-    instruction: |
-      Detail belief systems:
-      - Deities/higher powers
-      - Creation myths
-      - Religious practices
-      - Sacred sites
-      - Religious conflicts
-    elicit: true
-==================== END: .bmad-creative-writing/templates/world-guide-tmpl.yaml ====================
-
-==================== START: .bmad-creative-writing/checklists/world-building-continuity-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 2. World‑Building Continuity Checklist
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: world-building-continuity-checklist
-name: World‑Building Continuity Checklist
-description: Ensure geography, cultures, tech/magic rules, and timeline stay coherent.
-items:
-
-- "[ ] Map geography referenced consistently"
-- "[ ] Cultural customs/laws remain uniform"
-- "[ ] Magic/tech limitations not violated"
-- "[ ] Historical dates/events match world‑guide"
-- "[ ] Economics/politics align scene to scene"
-- "[ ] Travel times/distances are plausible"
-  ...
-==================== END: .bmad-creative-writing/checklists/world-building-continuity-checklist.md ====================
-
-==================== START: .bmad-creative-writing/checklists/fantasy-magic-system-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 17. Fantasy Magic System Consistency Checklist
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: fantasy-magic-system-checklist
-name: Fantasy Magic System Consistency Checklist
-description: Keep magical rules, costs, and exceptions coherent.
-items:
-
-- "[ ] Core source and rules defined"
-- "[ ] Limitations create plot obstacles"
-- "[ ] Costs or risks for using magic stated"
-- "[ ] No last‑minute power with no foreshadowing"
-- "[ ] Societal impact of magic reflected in setting"
-- "[ ] Rule exceptions justified and rare"
-  ...
-==================== END: .bmad-creative-writing/checklists/fantasy-magic-system-checklist.md ====================
-
-==================== START: .bmad-creative-writing/checklists/steampunk-gadget-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 25. Steampunk Gadget Plausibility Checklist
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: steampunk-gadget-checklist
-name: Steampunk Gadget Plausibility Checklist
-description: Verify brass‑and‑steam inventions obey pseudo‑Victorian tech logic.
-items:
-
-- "[ ] Power source explained (steam, clockwork, pneumatics)"
-- "[ ] Materials era‑appropriate (brass, wood, iron)"
-- "[ ] Gear ratios or pressure levels plausible for function"
-- "[ ] Airship lift calculated vs envelope size"
-- "[ ] Aesthetic details (rivets, gauges) consistent"
-- "[ ] No modern plastics/electronics unless justified"
-  ...
-==================== END: .bmad-creative-writing/checklists/steampunk-gadget-checklist.md ====================
-
-==================== START: .bmad-creative-writing/tasks/final-polish.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 14. Final Polish
-
-# ------------------------------------------------------------
-
----
-
-task:
-id: final-polish
-name: Final Polish
-description: Line‑edit for style, clarity, grammar.
-persona_default: editor
-inputs:
-
-- chapter-dialog.md | polished-manuscript.md
-  steps:
-- Correct grammar and tighten prose.
-- Ensure consistent voice.
-  output: chapter-final.md | final-manuscript.md
-  ...
-==================== END: .bmad-creative-writing/tasks/final-polish.md ====================
-
-==================== START: .bmad-creative-writing/tasks/incorporate-feedback.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 6. Incorporate Feedback
-
-# ------------------------------------------------------------
-
----
-
-task:
-id: incorporate-feedback
-name: Incorporate Feedback
-description: Merge beta feedback into manuscript; accept, reject, or revise.
-persona_default: editor
-inputs:
-
-- draft-manuscript.md
-- beta-notes.md
-  steps:
-- Summarize actionable changes.
-- Apply revisions inline.
-- Mark resolved comments.
-  output: polished-manuscript.md
-  ...
-==================== END: .bmad-creative-writing/tasks/incorporate-feedback.md ====================
-
-==================== START: .bmad-creative-writing/checklists/line-edit-quality-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 4. Line‑Edit Quality Checklist
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: line-edit-quality-checklist
-name: Line‑Edit Quality Checklist
-description: Copy‑editing pass for clarity, grammar, and style.
-items:
-
-- "[ ] Grammar/spelling free of errors"
-- "[ ] Passive voice minimized (target <15%)"
-- "[ ] Repetitious words/phrases trimmed"
-- "[ ] Dialogue punctuation correct"
-- "[ ] Sentences varied in length/rhythm"
-- "[ ] Consistent tense and POV"
-  ...
-==================== END: .bmad-creative-writing/checklists/line-edit-quality-checklist.md ====================
-
-==================== START: .bmad-creative-writing/checklists/publication-readiness-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 5. Publication Readiness Checklist
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: publication-readiness-checklist
-name: Publication Readiness Checklist
-description: Final checks before releasing or submitting the manuscript.
-items:
-
-- "[ ] Front matter complete (title, author, dedication)"
-- "[ ] Back matter complete (acknowledgments, about author)"
-- "[ ] Table of contents updated (digital)"
-- "[ ] Chapter headings numbered correctly"
-- "[ ] Formatting styles consistent"
-- "[ ] Metadata (ISBN, keywords) embedded"
-  ...
-==================== END: .bmad-creative-writing/checklists/publication-readiness-checklist.md ====================
-
-==================== START: .bmad-creative-writing/tasks/provide-feedback.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 5. Provide Feedback (Beta)
-
-# ------------------------------------------------------------
-
----
-
-task:
-id: provide-feedback
-name: Provide Feedback (Beta)
-description: Simulate beta‑reader feedback using beta-feedback-form-tmpl.
-persona_default: beta-reader
-inputs:
-
-- draft-manuscript.md | chapter-draft.md
-  steps:
-- Read provided text.
-- Fill feedback form objectively.
-- Save as beta-notes.md or chapter-notes.md.
-  output: beta-notes.md
-  ...
-==================== END: .bmad-creative-writing/tasks/provide-feedback.md ====================
-
-==================== START: .bmad-creative-writing/tasks/quick-feedback.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 13. Quick Feedback (Serial)
-
-# ------------------------------------------------------------
-
----
-
-task:
-id: quick-feedback
-name: Quick Feedback (Serial)
-description: Fast beta feedback focused on pacing and hooks.
-persona_default: beta-reader
-inputs:
-
-- chapter-dialog.md
-  steps:
-- Use condensed beta-feedback-form.
-  output: chapter-notes.md
-  ...
-==================== END: .bmad-creative-writing/tasks/quick-feedback.md ====================
-
-==================== START: .bmad-creative-writing/tasks/analyze-reader-feedback.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 16. Analyze Reader Feedback
-
-# ------------------------------------------------------------
-
----
-
-task:
-id: analyze-reader-feedback
-name: Analyze Reader Feedback
-description: Summarize reader comments, identify trends, update story bible.
-persona_default: beta-reader
-inputs:
-
-- publication-log.md
-  steps:
-- Cluster comments by theme.
-- Suggest course corrections.
-  output: retro.md
-  ...
-==================== END: .bmad-creative-writing/tasks/analyze-reader-feedback.md ====================
-
-==================== START: .bmad-creative-writing/templates/beta-feedback-form.yaml ====================
-# <!-- Powered by BMAD™ Core -->
----
-template:
-  id: beta-feedback-form-tmpl
-  name: Beta Feedback Form
-  version: 1.0
-  description: Structured questionnaire for beta readers
-  output:
-    format: markdown
-    filename: "beta-feedback-{{reader_name}}.md"
-
-workflow:
-  elicitation: true
-  allow_skip: true
-
-sections:
-  - id: reader_info
-    title: Reader Information
-    instruction: |
-      Collect reader details:
-      - Reader name
-      - Reading experience level
-      - Genre preferences
-      - Date of feedback
-    elicit: true
-
-  - id: overall_impressions
-    title: Overall Impressions
-    instruction: |
-      Gather general reactions:
-      - What worked well overall
-      - What confused or bored you
-      - Most memorable moments
-      - Overall rating (1-10)
-    elicit: true
-
-  - id: characters
-    title: Character Feedback
-    instruction: |
-      Evaluate character development:
-      - Favorite character and why
-      - Least engaging character and why
-      - Character believability
-      - Character arc satisfaction
-      - Dialogue authenticity
-    elicit: true
-
-  - id: plot_pacing
-    title: Plot & Pacing
-    instruction: |
-      Assess story structure:
-      - High-point scenes
-      - Slowest sections
-      - Plot holes or confusion
-      - Pacing issues
-      - Predictability concerns
-    elicit: true
-
-  - id: world_setting
-    title: World & Setting
-    instruction: |
-      Review world-building:
-      - Setting clarity
-      - World consistency
-      - Immersion level
-      - Description balance
-    elicit: true
-
-  - id: emotional_response
-    title: Emotional Response
-    instruction: |
-      Document emotional impact:
-      - Strong emotions felt
-      - Scenes that moved you
-      - Connection to characters
-      - Satisfaction with ending
-    elicit: true
-
-  - id: technical_issues
-    title: Technical Issues
-    instruction: |
-      Note any technical problems:
-      - Grammar/spelling errors
-      - Continuity issues
-      - Formatting problems
-      - Confusing passages
-    elicit: true
-
-  - id: suggestions
-    title: Final Suggestions
-    instruction: |
-      Provide improvement recommendations:
-      - Top three improvements needed
-      - Would you recommend to others
-      - Comparison to similar books
-      - Additional comments
-    elicit: true
-==================== END: .bmad-creative-writing/templates/beta-feedback-form.yaml ====================
-
-==================== START: .bmad-creative-writing/checklists/beta-feedback-closure-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 6. Beta‑Feedback Closure Checklist
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: beta-feedback-closure-checklist
-name: Beta‑Feedback Closure Checklist
-description: Ensure all beta reader notes are addressed or consciously deferred.
-items:
-
-- "[ ] Each beta note categorized (Fix/Ignore/Consider)"
-- "[ ] Fixes implemented in manuscript"
-- "[ ] ‘Ignore’ notes documented with rationale"
-- "[ ] ‘Consider’ notes scheduled for future pass"
-- "[ ] Beta readers acknowledged in back matter"
-- "[ ] Summary of changes logged in retro.md"
-  ...
-==================== END: .bmad-creative-writing/checklists/beta-feedback-closure-checklist.md ====================
-
-==================== START: .bmad-creative-writing/checklists/comedic-timing-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 23. Comedic Timing & Humor Checklist
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: comedic-timing-checklist
-name: Comedic Timing & Humor Checklist
-description: Ensure jokes land and humorous beats serve character/plot.
-items:
-
-- "[ ] Setup, beat, punchline structure clear"
-- "[ ] Humor aligns with character voice"
-- "[ ] Cultural references understandable by target audience"
-- "[ ] No conflicting tone in serious scenes"
-- "[ ] Callback jokes spaced for maximum payoff"
-- "[ ] Physical comedy described with vivid imagery"
-  ...
-==================== END: .bmad-creative-writing/checklists/comedic-timing-checklist.md ====================
-
-==================== START: .bmad-creative-writing/tasks/outline-scenes.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 11. Outline Scenes
-
-# ------------------------------------------------------------
-
----
-
-task:
-id: outline-scenes
-name: Outline Scenes
-description: Group scene list into chapters with act structure.
-persona_default: plot-architect
-inputs:
-
-- scene-list.md
-  steps:
-- Assign scenes to chapters.
-- Produce snowflake-outline.md with headings per chapter.
-  output: snowflake-outline.md
-  ...
-==================== END: .bmad-creative-writing/tasks/outline-scenes.md ====================
-
-==================== START: .bmad-creative-writing/tasks/generate-scene-list.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 10. Generate Scene List
-
-# ------------------------------------------------------------
-
----
-
-task:
-id: generate-scene-list
-name: Generate Scene List
-description: Break synopsis into a numbered list of scenes.
-persona_default: plot-architect
-inputs:
-
-- synopsis.md | story-outline.md
-  steps:
-- Identify key beats.
-- Fill scene-list-tmpl table.
-  output: scene-list.md
-  ...
-==================== END: .bmad-creative-writing/tasks/generate-scene-list.md ====================
-
-==================== START: .bmad-creative-writing/checklists/genre-tropes-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 10. Genre Tropes Checklist (General)
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: genre-tropes-checklist
-name: Genre Tropes Checklist
-description: Confirm expected reader promises for chosen genre are addressed or subverted intentionally.
-items:
-
-- "[ ] Core genre conventions present (e.g., mystery has a solvable puzzle)"
-- "[ ] Audience‑favored tropes used or consciously averted"
-- "[ ] Genre pacing beats hit (e.g., romance meet‑cute by 15%)"
-- "[ ] Satisfying genre‑appropriate climax"
-- "[ ] Reader expectations subversions sign‑posted to avoid disappointment"
-  ...
-==================== END: .bmad-creative-writing/checklists/genre-tropes-checklist.md ====================
-
-==================== START: .bmad-creative-writing/checklists/scifi-technology-plausibility-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 15. Sci‑Fi Technology Plausibility Checklist
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: scifi-technology-plausibility-checklist
-name: Sci‑Fi Technology Plausibility Checklist
-description: Ensure advanced technologies feel believable and internally consistent.
-items:
-
-- "[ ] Technology built on clear scientific principles or hand‑waved consistently"
-- "[ ] Limits and costs of tech established"
-- "[ ] Tech capabilities applied consistently to plot"
-- "[ ] No forgotten tech that would solve earlier conflicts"
-- "[ ] Terminology explained or intuitively clear"
-  ...
-==================== END: .bmad-creative-writing/checklists/scifi-technology-plausibility-checklist.md ====================
-
-==================== START: .bmad-creative-writing/checklists/romance-emotional-beats-checklist.md ====================
-<!-- Powered by BMAD™ Core -->
-# ------------------------------------------------------------
-
-# 12. Romance Emotional Beats Checklist
-
-# ------------------------------------------------------------
-
----
-
-checklist:
-id: romance-emotional-beats-checklist
-name: Romance Emotional Beats Checklist
-description: Track essential emotional beats in romance arcs.
-items:
-
-- "[ ] Meet‑cute / inciting attraction"
-- "[ ] Growing intimacy montage"
-- "[ ] Midpoint commitment or confession moment"
-- "[ ] Dark night of the soul / breakup"
-- "[ ] Grand gesture or reconciliation"
-- "[ ] HEA or HFN ending clear"
-  ...
-==================== END: .bmad-creative-writing/checklists/romance-emotional-beats-checklist.md ====================
 
 ==================== START: .bmad-creative-writing/templates/beta-feedback-form.yaml ====================
 # <!-- Powered by BMAD™ Core -->
@@ -3786,6 +2494,7 @@ sections:
 
 ==================== START: .bmad-creative-writing/tasks/advanced-elicitation.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Advanced Elicitation Task
 
 ## Purpose
@@ -3907,6 +2616,7 @@ Choose a number (0-8) or 9 to proceed:
 
 ==================== START: .bmad-creative-writing/tasks/analyze-reader-feedback.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 16. Analyze Reader Feedback
@@ -3932,6 +2642,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/analyze-story-structure.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Analyze Story Structure
 
 ## Purpose
@@ -4001,6 +2712,7 @@ Comprehensive structural analysis with actionable recommendations
 
 ==================== START: .bmad-creative-writing/tasks/assemble-kdp-package.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # tasks/assemble-kdp-package.md
@@ -4032,6 +2744,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/brainstorm-premise.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 1. Brainstorm Premise
@@ -4057,6 +2770,7 @@ steps:
 
 ==================== START: .bmad-creative-writing/tasks/build-world.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 2. Build World
@@ -4083,6 +2797,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/character-depth-pass.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 9. Character Depth Pass
@@ -4107,6 +2822,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/create-doc.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Document from Template (YAML Driven)
 
 ## ⚠️ CRITICAL EXECUTION NOTICE ⚠️
@@ -4212,6 +2928,7 @@ User can type `#yolo` to toggle to YOLO mode (process all sections at once).
 
 ==================== START: .bmad-creative-writing/tasks/create-draft-section.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 4. Create Draft Section (Chapter)
@@ -4238,8 +2955,38 @@ inputs:
   ...
 ==================== END: .bmad-creative-writing/tasks/create-draft-section.md ====================
 
+==================== START: .bmad-creative-writing/tasks/critical-review.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# ------------------------------------------------------------
+
+# Critical Review Task
+
+# ------------------------------------------------------------
+
+---
+
+task:
+id: critical-review
+name: Critical Review
+description: Comprehensive professional critique using critic-review-tmpl and rubric checklist.
+persona_default: book-critic
+inputs:
+
+- manuscript file (e.g., draft-manuscript.md or chapter file)
+  steps:
+- If audience/genre not provided, prompt user for details.
+- Read manuscript (or excerpt) for holistic understanding.
+- Fill **critic-review-tmpl** with category scores and commentary.
+- Execute **checklists/critic-rubric-checklist** to spot omissions; revise output if any boxes unchecked.
+- Present final review to user.
+  output: critic-review.md
+  ...
+==================== END: .bmad-creative-writing/tasks/critical-review.md ====================
+
 ==================== START: .bmad-creative-writing/tasks/develop-character.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 3. Develop Character
@@ -4266,6 +3013,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/execute-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Checklist Validation Task
 
 This task provides instructions for validating documentation against checklists. The agent MUST follow these instructions to ensure thorough and systematic validation of documents.
@@ -4356,6 +3104,7 @@ The LLM will:
 
 ==================== START: .bmad-creative-writing/tasks/expand-premise.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 7. Expand Premise (Snowflake Step 2)
@@ -4381,6 +3130,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/expand-synopsis.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 8. Expand Synopsis (Snowflake Step 4)
@@ -4406,6 +3156,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/final-polish.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 14. Final Polish
@@ -4431,6 +3182,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/generate-cover-brief.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # tasks/generate-cover-brief.md
@@ -4458,6 +3210,7 @@ steps:
 
 ==================== START: .bmad-creative-writing/tasks/generate-cover-prompts.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # tasks/generate-cover-prompts.md
@@ -4486,6 +3239,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/generate-scene-list.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 10. Generate Scene List
@@ -4511,6 +3265,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/incorporate-feedback.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 6. Incorporate Feedback
@@ -4538,6 +3293,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/outline-scenes.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 11. Outline Scenes
@@ -4563,6 +3319,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/provide-feedback.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 5. Provide Feedback (Beta)
@@ -4589,6 +3346,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/publish-chapter.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 15. Publish Chapter
@@ -4614,6 +3372,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/quick-feedback.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 13. Quick Feedback (Serial)
@@ -4638,6 +3397,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/select-next-arc.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 12. Select Next Arc (Serial)
@@ -4663,6 +3423,7 @@ inputs:
 
 ==================== START: .bmad-creative-writing/tasks/workshop-dialog.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Workshop Dialog
 
 ## Purpose
@@ -4729,6 +3490,7 @@ Refined dialog with stronger voices and dramatic impact
 
 ==================== START: .bmad-creative-writing/checklists/beta-feedback-closure-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 6. Beta‑Feedback Closure Checklist
@@ -4754,6 +3516,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/character-consistency-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 1. Character Consistency Checklist
@@ -4779,6 +3542,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/comedic-timing-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 23. Comedic Timing & Humor Checklist
@@ -4804,6 +3568,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/cyberpunk-aesthetic-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 24. Cyberpunk Aesthetic Consistency Checklist
@@ -4829,6 +3594,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/ebook-formatting-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 14. eBook Formatting Checklist
@@ -4852,6 +3618,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/epic-poetry-meter-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 22. Epic Poetry Meter & Form Checklist
@@ -4877,6 +3644,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/fantasy-magic-system-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 17. Fantasy Magic System Consistency Checklist
@@ -4902,6 +3670,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/foreshadowing-payoff-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 9. Foreshadowing & Payoff Checklist
@@ -4924,8 +3693,34 @@ items:
   ...
 ==================== END: .bmad-creative-writing/checklists/foreshadowing-payoff-checklist.md ====================
 
+==================== START: .bmad-creative-writing/checklists/genre-tropes-checklist.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# ------------------------------------------------------------
+
+# 10. Genre Tropes Checklist (General)
+
+# ------------------------------------------------------------
+
+---
+
+checklist:
+id: genre-tropes-checklist
+name: Genre Tropes Checklist
+description: Confirm expected reader promises for chosen genre are addressed or subverted intentionally.
+items:
+
+- "[ ] Core genre conventions present (e.g., mystery has a solvable puzzle)"
+- "[ ] Audience‑favored tropes used or consciously averted"
+- "[ ] Genre pacing beats hit (e.g., romance meet‑cute by 15%)"
+- "[ ] Satisfying genre‑appropriate climax"
+- "[ ] Reader expectations subversions sign‑posted to avoid disappointment"
+  ...
+==================== END: .bmad-creative-writing/checklists/genre-tropes-checklist.md ====================
+
 ==================== START: .bmad-creative-writing/checklists/historical-accuracy-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 18. Historical Accuracy Checklist
@@ -4951,6 +3746,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/horror-suspense-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 16. Horror Suspense & Scare Checklist
@@ -4976,6 +3772,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/kdp-cover-ready-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # checklists/kdp-cover-ready-checklist.md
@@ -5003,6 +3800,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/line-edit-quality-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 4. Line‑Edit Quality Checklist
@@ -5028,6 +3826,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/marketing-copy-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 13. Marketing Copy Checklist
@@ -5053,6 +3852,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/mystery-clue-trail-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 11. Mystery Clue Trail Checklist
@@ -5078,6 +3878,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/orbital-mechanics-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 21. Hard‑Science Orbital Mechanics Checklist
@@ -5103,6 +3904,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/plot-structure-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Plot Structure Checklist
 
 ## Opening
@@ -5164,6 +3966,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/publication-readiness-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 5. Publication Readiness Checklist
@@ -5189,6 +3992,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/romance-emotional-beats-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 12. Romance Emotional Beats Checklist
@@ -5214,6 +4018,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/scene-quality-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 3. Scene Quality Checklist
@@ -5239,6 +4044,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/scifi-technology-plausibility-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 15. Sci‑Fi Technology Plausibility Checklist
@@ -5263,6 +4069,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/sensitivity-representation-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 7. Sensitivity & Representation Checklist
@@ -5288,6 +4095,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/steampunk-gadget-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 25. Steampunk Gadget Plausibility Checklist
@@ -5313,6 +4121,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/thriller-pacing-stakes-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 19. Thriller Pacing & Stakes Checklist
@@ -5338,6 +4147,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/timeline-continuity-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 8. Timeline & Continuity Checklist
@@ -5363,6 +4173,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/world-building-continuity-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 2. World‑Building Continuity Checklist
@@ -5388,6 +4199,7 @@ items:
 
 ==================== START: .bmad-creative-writing/checklists/ya-appropriateness-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # ------------------------------------------------------------
 
 # 20. YA Appropriateness Checklist
@@ -5413,6 +4225,7 @@ items:
 
 ==================== START: .bmad-creative-writing/workflows/book-cover-design-workflow.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Book Cover Design Assets
 
 # ============================================================
@@ -6147,6 +4960,7 @@ outputs:
 
 ==================== START: .bmad-creative-writing/data/bmad-kb.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # BMad Creative Writing Knowledge Base
 
 ## Overview
@@ -6358,6 +5172,7 @@ Remember: BMad Creative Writing provides structure to liberate creativity, not c
 
 ==================== START: .bmad-creative-writing/data/story-structures.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Story Structure Patterns
 
 ## Three-Act Structure

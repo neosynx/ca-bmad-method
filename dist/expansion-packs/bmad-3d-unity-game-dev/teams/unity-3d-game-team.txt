@@ -8,13 +8,13 @@ You are now operating as a specialized AI agent from the BMad-Method framework. 
 
 2. **Resource Navigation**: This bundle contains all resources you need. Resources are marked with tags like:
 
-- `==================== START: .bmad-2d-unity-game-dev/folder/filename.md ====================`
-- `==================== END: .bmad-2d-unity-game-dev/folder/filename.md ====================`
+- `==================== START: .bmad-3d-unity-game-dev/folder/filename.md ====================`
+- `==================== END: .bmad-3d-unity-game-dev/folder/filename.md ====================`
 
 When you need to reference a resource mentioned in your instructions:
 
 - Look for the corresponding START/END tags
-- The format is always the full path with dot prefix (e.g., `.bmad-2d-unity-game-dev/personas/analyst.md`, `.bmad-2d-unity-game-dev/tasks/create-story.md`)
+- The format is always the full path with dot prefix (e.g., `.bmad-3d-unity-game-dev/personas/analyst.md`, `.bmad-3d-unity-game-dev/tasks/create-story.md`)
 - If a section is specified (e.g., `{root}/tasks/create-story.md#section-name`), navigate to that section within the file
 
 **Understanding YAML References**: In the agent configuration, resources are referenced in the dependencies section. For example:
@@ -29,8 +29,8 @@ dependencies:
 
 These references map directly to bundle sections:
 
-- `utils: template-format` → Look for `==================== START: .bmad-2d-unity-game-dev/utils/template-format.md ====================`
-- `tasks: create-story` → Look for `==================== START: .bmad-2d-unity-game-dev/tasks/create-story.md ====================`
+- `utils: template-format` → Look for `==================== START: .bmad-3d-unity-game-dev/utils/template-format.md ====================`
+- `tasks: create-story` → Look for `==================== START: .bmad-3d-unity-game-dev/tasks/create-story.md ====================`
 
 3. **Execution Context**: You are operating in a web environment. All your capabilities and knowledge are contained within this bundle. Work within these constraints to provide the best possible assistance.
 
@@ -39,12 +39,12 @@ These references map directly to bundle sections:
 ---
 
 
-==================== START: .bmad-2d-unity-game-dev/agent-teams/unity-2d-game-team.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/agent-teams/unity-3d-game-team.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 bundle:
-  name: Unity 2D Game Team
+  name: Unity 3D Game Team
   icon: 🎮
-  description: Game Development team specialized in 2D games using Unity and C#.
+  description: Game Development team specialized in 3D games using Unity and C#.
 agents:
   - analyst
   - bmad-orchestrator
@@ -55,9 +55,9 @@ agents:
 workflows:
   - unity-game-dev-greenfield.md
   - unity-game-prototype.md
-==================== END: .bmad-2d-unity-game-dev/agent-teams/unity-2d-game-team.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/agent-teams/unity-3d-game-team.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/agents/analyst.md ====================
+==================== START: .bmad-3d-unity-game-dev/agents/analyst.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # analyst
@@ -71,9 +71,9 @@ CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your 
 ```yaml
 IDE-FILE-RESOLUTION:
   - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
-  - Dependencies map to .bmad-2d-unity-game-dev/{type}/{name}
+  - Dependencies map to .bmad-3d-unity-game-dev/{type}/{name}
   - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
-  - Example: create-doc.md → .bmad-2d-unity-game-dev/tasks/create-doc.md
+  - Example: create-doc.md → .bmad-3d-unity-game-dev/tasks/create-doc.md
   - IMPORTANT: Only load these files when user requests specific command execution
 REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
@@ -142,9 +142,9 @@ dependencies:
     - market-research-tmpl.yaml
     - project-brief-tmpl.yaml
 ```
-==================== END: .bmad-2d-unity-game-dev/agents/analyst.md ====================
+==================== END: .bmad-3d-unity-game-dev/agents/analyst.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/agents/bmad-orchestrator.md ====================
+==================== START: .bmad-3d-unity-game-dev/agents/bmad-orchestrator.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # BMad Web Orchestrator
@@ -158,9 +158,9 @@ CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your 
 ```yaml
 IDE-FILE-RESOLUTION:
   - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
-  - Dependencies map to .bmad-2d-unity-game-dev/{type}/{name}
+  - Dependencies map to .bmad-3d-unity-game-dev/{type}/{name}
   - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
-  - Example: create-doc.md → .bmad-2d-unity-game-dev/tasks/create-doc.md
+  - Example: create-doc.md → .bmad-3d-unity-game-dev/tasks/create-doc.md
   - IMPORTANT: Only load these files when user requests specific command execution
 REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
@@ -292,9 +292,9 @@ dependencies:
   utils:
     - workflow-management.md
 ```
-==================== END: .bmad-2d-unity-game-dev/agents/bmad-orchestrator.md ====================
+==================== END: .bmad-3d-unity-game-dev/agents/bmad-orchestrator.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/agents/game-designer.md ====================
+==================== START: .bmad-3d-unity-game-dev/agents/game-designer.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # game-designer
@@ -308,9 +308,9 @@ CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your 
 ```yaml
 IDE-FILE-RESOLUTION:
   - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
-  - Dependencies map to .bmad-2d-unity-game-dev/{type}/{name}
+  - Dependencies map to .bmad-3d-unity-game-dev/{type}/{name}
   - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
-  - Example: create-doc.md → .bmad-2d-unity-game-dev/tasks/create-doc.md
+  - Example: create-doc.md → .bmad-3d-unity-game-dev/tasks/create-doc.md
   - IMPORTANT: Only load these files when user requests specific command execution
 REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
@@ -374,9 +374,9 @@ dependencies:
   data:
     - bmad-kb.md
 ```
-==================== END: .bmad-2d-unity-game-dev/agents/game-designer.md ====================
+==================== END: .bmad-3d-unity-game-dev/agents/game-designer.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/agents/game-architect.md ====================
+==================== START: .bmad-3d-unity-game-dev/agents/game-architect.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # game-architect
@@ -390,9 +390,9 @@ CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your 
 ```yaml
 IDE-FILE-RESOLUTION:
   - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
-  - Dependencies map to .bmad-2d-unity-game-dev/{type}/{name}
+  - Dependencies map to .bmad-3d-unity-game-dev/{type}/{name}
   - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
-  - Example: create-doc.md → .bmad-2d-unity-game-dev/tasks/create-doc.md
+  - Example: create-doc.md → .bmad-3d-unity-game-dev/tasks/create-doc.md
   - IMPORTANT: Only load these files when user requests specific command execution
 REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
@@ -414,12 +414,12 @@ agent:
   id: game-architect
   title: Game Architect
   icon: 🎮
-  whenToUse: Use for Unity 2D game architecture, system design, technical game architecture documents, Unity technology selection, and game infrastructure planning
+  whenToUse: Use for Unity 3D game architecture, system design, technical game architecture documents, Unity technology selection, and game infrastructure planning
   customization: null
 persona:
-  role: Unity 2D Game System Architect & Technical Game Design Expert
+  role: Unity 3D Game System Architect & Technical Game Design Expert
   style: Game-focused, performance-oriented, Unity-native, scalable system design
-  identity: Master of Unity 2D game architecture who bridges game design, Unity systems, and C# implementation
+  identity: Master of Unity 3D game architecture who bridges game design, Unity systems, and C# implementation
   focus: Complete game systems architecture, Unity-specific optimization, scalable game development patterns
   core_principles:
     - Game-First Thinking - Every technical decision serves gameplay and player experience
@@ -459,9 +459,9 @@ dependencies:
     - development-guidelines.md
     - bmad-kb.md
 ```
-==================== END: .bmad-2d-unity-game-dev/agents/game-architect.md ====================
+==================== END: .bmad-3d-unity-game-dev/agents/game-architect.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/agents/game-developer.md ====================
+==================== START: .bmad-3d-unity-game-dev/agents/game-developer.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # game-developer
@@ -475,9 +475,9 @@ CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your 
 ```yaml
 IDE-FILE-RESOLUTION:
   - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
-  - Dependencies map to .bmad-2d-unity-game-dev/{type}/{name}
+  - Dependencies map to .bmad-3d-unity-game-dev/{type}/{name}
   - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
-  - Example: create-doc.md → .bmad-2d-unity-game-dev/tasks/create-doc.md
+  - Example: create-doc.md → .bmad-3d-unity-game-dev/tasks/create-doc.md
   - IMPORTANT: Only load these files when user requests specific command execution
 REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
@@ -492,8 +492,8 @@ activation-instructions:
   - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
-  - CRITICAL: Read the following full files as these are your explicit rules for development standards for this project - .bmad-2d-unity-game-dev/core-config.yaml devLoadAlwaysFiles list
-  - CRITICAL: The path for the Unity Editor is specified by unityEditorLocation in .bmad-2d-unity-game-dev/core-config.yaml
+  - CRITICAL: Read the following full files as these are your explicit rules for development standards for this project - .bmad-3d-unity-game-dev/core-config.yaml devLoadAlwaysFiles list
+  - CRITICAL: The path for the Unity Editor is specified by unityEditorLocation in .bmad-3d-unity-game-dev/core-config.yaml
   - CRITICAL: Do NOT load any other files during startup aside from the assigned story and devLoadAlwaysFiles items, unless user requested you do or the following contradicts
   - CRITICAL: Do NOT begin development until a story is not in draft mode and you are told to proceed
   - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
@@ -542,9 +542,9 @@ dependencies:
   checklists:
     - game-story-dod-checklist.md
 ```
-==================== END: .bmad-2d-unity-game-dev/agents/game-developer.md ====================
+==================== END: .bmad-3d-unity-game-dev/agents/game-developer.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/agents/game-sm.md ====================
+==================== START: .bmad-3d-unity-game-dev/agents/game-sm.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # game-sm
@@ -558,9 +558,9 @@ CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your 
 ```yaml
 IDE-FILE-RESOLUTION:
   - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
-  - Dependencies map to .bmad-2d-unity-game-dev/{type}/{name}
+  - Dependencies map to .bmad-3d-unity-game-dev/{type}/{name}
   - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
-  - Example: create-doc.md → .bmad-2d-unity-game-dev/tasks/create-doc.md
+  - Example: create-doc.md → .bmad-3d-unity-game-dev/tasks/create-doc.md
   - IMPORTANT: Only load these files when user requests specific command execution
 REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
@@ -612,9 +612,9 @@ dependencies:
   checklists:
     - game-change-checklist.md
 ```
-==================== END: .bmad-2d-unity-game-dev/agents/game-sm.md ====================
+==================== END: .bmad-3d-unity-game-dev/agents/game-sm.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/data/bmad-kb.md ====================
+==================== START: .bmad-3d-unity-game-dev/data/bmad-kb.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # BMad Knowledge Base - 2D Unity Game Development
@@ -1386,9 +1386,9 @@ Use the **expansion-creator** pack to build your own game development extensions
 - **Game Contributing**: See `CONTRIBUTING.md` for full game development guidelines
 
 This knowledge base provides the foundation for effective game development using the BMad-Method framework with specialized focus on 2D game creation using Unity and C#.
-==================== END: .bmad-2d-unity-game-dev/data/bmad-kb.md ====================
+==================== END: .bmad-3d-unity-game-dev/data/bmad-kb.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/data/brainstorming-techniques.md ====================
+==================== START: .bmad-3d-unity-game-dev/data/brainstorming-techniques.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Brainstorming Techniques Data
@@ -1427,9 +1427,9 @@ This knowledge base provides the foundation for effective game development using
 18. **Resource Constraints**: "What if you had only $10 and 1 hour?"
 19. **Metaphor Mapping**: Use extended metaphors to explore solutions
 20. **Question Storming**: Generate questions instead of answers first
-==================== END: .bmad-2d-unity-game-dev/data/brainstorming-techniques.md ====================
+==================== END: .bmad-3d-unity-game-dev/data/brainstorming-techniques.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/advanced-elicitation.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/advanced-elicitation.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Advanced Game Design Elicitation Task
@@ -1542,9 +1542,9 @@ The questions and perspectives offered should always consider:
 - Performance implications for stable frame rate targets
 - Cross-platform compatibility (PC, console, mobile)
 - Game development best practices and common pitfalls
-==================== END: .bmad-2d-unity-game-dev/tasks/advanced-elicitation.md ====================
+==================== END: .bmad-3d-unity-game-dev/tasks/advanced-elicitation.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/create-deep-research-prompt.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/create-deep-research-prompt.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Create Deep Research Prompt Task
@@ -1825,9 +1825,9 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Balance comprehensiveness with focus
 - Document assumptions and limitations clearly
 - Plan for iterative refinement based on initial findings
-==================== END: .bmad-2d-unity-game-dev/tasks/create-deep-research-prompt.md ====================
+==================== END: .bmad-3d-unity-game-dev/tasks/create-deep-research-prompt.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/create-doc.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/create-doc.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Create Document from Template (YAML Driven)
@@ -1931,9 +1931,9 @@ User can type `#yolo` to toggle to YOLO mode (process all sections at once).
 - Select options 2-9 from data/elicitation-methods only
 - Provide detailed rationale explaining decisions
 - End with "Select 1-9 or just type your question/feedback:"
-==================== END: .bmad-2d-unity-game-dev/tasks/create-doc.md ====================
+==================== END: .bmad-3d-unity-game-dev/tasks/create-doc.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/document-project.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/document-project.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Document an Existing Project
@@ -2279,13 +2279,13 @@ Apply the advanced elicitation task after major sections to refine based on user
 - Documents technical debt, workarounds, and constraints honestly
 - For brownfield projects with PRD: Provides clear enhancement impact analysis
 - The goal is PRACTICAL documentation for AI agents doing real work
-==================== END: .bmad-2d-unity-game-dev/tasks/document-project.md ====================
+==================== END: .bmad-3d-unity-game-dev/tasks/document-project.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/facilitate-brainstorming-session.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/facilitate-brainstorming-session.md ====================
 ## <!-- Powered by BMAD™ Core -->
 
 docOutputLocation: docs/brainstorming-session-results.md
-template: '.bmad-2d-unity-game-dev/templates/brainstorming-output-tmpl.yaml'
+template: '.bmad-3d-unity-game-dev/templates/brainstorming-output-tmpl.yaml'
 
 ---
 
@@ -2420,9 +2420,9 @@ Generate structured document with these sections:
 - Always ask before switching techniques: "Ready to try a different approach?"
 - Offer options: "Should we explore this idea deeper or generate more alternatives?"
 - Respect their process and timing
-==================== END: .bmad-2d-unity-game-dev/tasks/facilitate-brainstorming-session.md ====================
+==================== END: .bmad-3d-unity-game-dev/tasks/facilitate-brainstorming-session.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/templates/brainstorming-output-tmpl.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/templates/brainstorming-output-tmpl.yaml ====================
 template:
   id: brainstorming-output-template-v2
   name: Brainstorming Session Results
@@ -2579,9 +2579,9 @@ sections:
       ---
 
       *Session facilitated using the BMAD-METHOD™ brainstorming framework*
-==================== END: .bmad-2d-unity-game-dev/templates/brainstorming-output-tmpl.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/templates/brainstorming-output-tmpl.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/templates/competitor-analysis-tmpl.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/templates/competitor-analysis-tmpl.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 template:
   id: competitor-analysis-template-v2
@@ -2889,9 +2889,9 @@ sections:
           - Weekly: {{weekly_items}}
           - Monthly: {{monthly_items}}
           - Quarterly: {{quarterly_analysis}}
-==================== END: .bmad-2d-unity-game-dev/templates/competitor-analysis-tmpl.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/templates/competitor-analysis-tmpl.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/templates/market-research-tmpl.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/templates/market-research-tmpl.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 template:
   id: market-research-template-v2
@@ -3145,9 +3145,9 @@ sections:
       - id: additional-analysis
         title: C. Additional Analysis
         instruction: Any supplementary analysis not included in main body
-==================== END: .bmad-2d-unity-game-dev/templates/market-research-tmpl.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/templates/market-research-tmpl.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/templates/project-brief-tmpl.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/templates/project-brief-tmpl.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 template:
   id: project-brief-template-v2
@@ -3370,9 +3370,9 @@ sections:
         title: PM Handoff
         content: |
           This Project Brief provides the full context for {{project_name}}. Please start in 'PRD Generation Mode', review the brief thoroughly to work with the user to create the PRD section by section as the template indicates, asking for any necessary clarification or suggesting improvements.
-==================== END: .bmad-2d-unity-game-dev/templates/project-brief-tmpl.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/templates/project-brief-tmpl.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/data/elicitation-methods.md ====================
+==================== START: .bmad-3d-unity-game-dev/data/elicitation-methods.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Elicitation Methods Data
@@ -3529,9 +3529,9 @@ sections:
 - Acknowledge choice to finalize current work
 - Accept output as-is or move to next step
 - Prepare to continue without additional elicitation
-==================== END: .bmad-2d-unity-game-dev/data/elicitation-methods.md ====================
+==================== END: .bmad-3d-unity-game-dev/data/elicitation-methods.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/kb-mode-interaction.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/kb-mode-interaction.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # KB Mode Interaction Task
@@ -3609,9 +3609,9 @@ Or ask me about anything else related to BMad-Method!
 **User**: Tell me about workflows
 
 **Assistant**: [Provides focused information about workflows from the KB, then offers to explore specific workflow types or related topics]
-==================== END: .bmad-2d-unity-game-dev/tasks/kb-mode-interaction.md ====================
+==================== END: .bmad-3d-unity-game-dev/tasks/kb-mode-interaction.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/utils/workflow-management.md ====================
+==================== START: .bmad-3d-unity-game-dev/utils/workflow-management.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Workflow Management
@@ -3683,9 +3683,9 @@ Handle conditional paths by asking clarifying questions when needed.
 ## Agent Integration
 
 Agents should be workflow-aware: know active workflow, their role, access artifacts, understand expected outputs.
-==================== END: .bmad-2d-unity-game-dev/utils/workflow-management.md ====================
+==================== END: .bmad-3d-unity-game-dev/utils/workflow-management.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/templates/game-architecture-tmpl.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/templates/game-architecture-tmpl.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 template:
   id: game-architecture-template-v3
@@ -3708,7 +3708,7 @@ sections:
     sections:
       - id: intro-content
         content: |
-          This document outlines the complete technical architecture for {{project_name}}, a 2D game built with Unity and C#. It serves as the technical foundation for AI-driven game development, ensuring consistency and scalability across all game systems.
+          This document outlines the complete technical architecture for {{project_name}}, a 3D game built with Unity and C#. It serves as the technical foundation for AI-driven game development, ensuring consistency and scalability across all game systems.
 
           This architecture is designed to support the gameplay mechanics defined in the Game Design Document while maintaining stable performance and cross-platform compatibility.
       - id: starter-template
@@ -3717,7 +3717,7 @@ sections:
           Before proceeding further with game architecture design, check if the project is based on a Unity template or existing codebase:
 
           1. Review the GDD and brainstorming brief for any mentions of:
-          - Unity templates (2D Core, 2D Mobile, 2D URP, etc.)
+          - Unity templates (3D Core, 3D Mobile, 3D with Extras, URP/HDRP, etc.)
           - Existing Unity projects being used as a foundation
           - Asset Store packages or game development frameworks
           - Previous game projects to be cloned or adapted
@@ -3815,7 +3815,7 @@ sections:
     instruction: |
       This is the DEFINITIVE technology selection section for the Unity game. Work with the user to make specific choices:
 
-      1. Review GDD technical assumptions and any preferences from .bmad-2d-unity-game-dev/data/technical-preferences.yaml or an attached technical-preferences
+      1. Review GDD technical assumptions and any preferences from .bmad-3d-unity-game-dev/data/technical-preferences.yaml or an attached technical-preferences
       2. For each category, present 2-3 viable options with pros/cons
       3. Make a clear recommendation based on project needs
       4. Get explicit user approval for each selection
@@ -4717,9 +4717,9 @@ sections:
           - Key Unity-specific requirements from this architecture
           - Any Unity package or configuration decisions made here
           - Request for adherence to established coding standards and patterns
-==================== END: .bmad-2d-unity-game-dev/templates/game-architecture-tmpl.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/templates/game-architecture-tmpl.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/templates/game-brief-tmpl.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/templates/game-brief-tmpl.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 template:
   id: game-brief-template-v3
@@ -5077,9 +5077,9 @@ sections:
         template: |
           | Date | Version | Description | Author |
           | :--- | :------ | :---------- | :----- |
-==================== END: .bmad-2d-unity-game-dev/templates/game-brief-tmpl.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/templates/game-brief-tmpl.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/templates/game-design-doc-tmpl.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/templates/game-design-doc-tmpl.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 template:
   id: game-design-doc-template-v3
@@ -5105,7 +5105,7 @@ sections:
         type: bullet-list
         instruction: Bullet list of 1 line desired outcomes the GDD will deliver if successful - game development and player experience goals
         examples:
-          - Create an engaging 2D platformer that teaches players basic programming concepts
+          - Create an engaging 3D adventure game that teaches players basic programming concepts
           - Deliver a polished mobile game that runs smoothly on low-end Android devices
           - Build a foundation for future expansion packs and content updates
       - id: background
@@ -5127,8 +5127,8 @@ sections:
         title: Core Concept
         instruction: 2-3 sentences that clearly describe what the game is and why players will love it
         examples:
-          - A fast-paced 2D platformer where players manipulate gravity to solve puzzles and defeat enemies in a hand-drawn world.
-          - An educational puzzle game that teaches coding concepts through visual programming blocks in a fantasy adventure setting.
+          - A fast-paced 3D action-adventure where players explore vast worlds and use environmental physics to solve complex puzzles.
+          - An immersive 3D RPG that teaches coding concepts through visual programming mechanics in a fantastical open world.
       - id: target-audience
         title: Target Audience
         instruction: Define the primary and secondary audience with demographics and gaming preferences
@@ -5154,9 +5154,9 @@ sections:
         instruction: List 3-5 key features that differentiate this game from competitors
         type: numbered-list
         examples:
-          - Innovative gravity manipulation mechanic that affects both player and environment
-          - Seamless integration of educational content without compromising fun gameplay
-          - Adaptive difficulty system that learns from player behavior
+          - Dynamic 3D environments that respond to player actions and physics interactions
+          - Immersive camera system with seamless transitions between different gameplay perspectives
+          - Advanced lighting and visual effects that enhance storytelling and atmosphere
 
   - id: core-gameplay
     title: Core Gameplay
@@ -5786,9 +5786,9 @@ sections:
           - "Unity Architect: Create detailed technical architecture document with specific Unity implementation patterns"
           - "Unity Developer: Implement core systems and gameplay mechanics according to architecture"
           - "QA Tester: Validate performance metrics and cross-platform functionality"
-==================== END: .bmad-2d-unity-game-dev/templates/game-design-doc-tmpl.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/templates/game-design-doc-tmpl.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/templates/game-story-tmpl.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/templates/game-story-tmpl.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 template:
   id: game-story-template-v3
@@ -6046,9 +6046,9 @@ sections:
 
       - {{future_enhancement_1}}
       - {{future_optimization_1}}
-==================== END: .bmad-2d-unity-game-dev/templates/game-story-tmpl.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/templates/game-story-tmpl.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/templates/level-design-doc-tmpl.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/templates/level-design-doc-tmpl.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 template:
   id: level-design-doc-template-v2
@@ -6534,9 +6534,9 @@ sections:
           - Mechanic integration effectiveness: {{integration_score}}
           - Player guidance clarity: {{guidance_score}}
           - Content accessibility: {{accessibility_rate}}%
-==================== END: .bmad-2d-unity-game-dev/templates/level-design-doc-tmpl.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/templates/level-design-doc-tmpl.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/advanced-elicitation.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/advanced-elicitation.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Advanced Game Design Elicitation Task
@@ -6649,16 +6649,16 @@ The questions and perspectives offered should always consider:
 - Performance implications for stable frame rate targets
 - Cross-platform compatibility (PC, console, mobile)
 - Game development best practices and common pitfalls
-==================== END: .bmad-2d-unity-game-dev/tasks/advanced-elicitation.md ====================
+==================== END: .bmad-3d-unity-game-dev/tasks/advanced-elicitation.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/correct-course-game.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/correct-course-game.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Correct Course Task - Game Development
 
 ## Purpose
 
-- Guide a structured response to game development change triggers using the `.bmad-2d-unity-game-dev/checklists/game-change-checklist`.
+- Guide a structured response to game development change triggers using the `.bmad-3d-unity-game-dev/checklists/game-change-checklist`.
 - Analyze the impacts of changes on game features, technical systems, and milestone deliverables.
 - Explore game-specific solutions (e.g., performance optimizations, feature scaling, platform adjustments).
 - Draft specific, actionable proposed updates to affected game artifacts (e.g., GDD sections, technical specs, Unity configurations).
@@ -6679,7 +6679,7 @@ The questions and perspectives offered should always consider:
     - Performance budgets and platform requirements
     - Current sprint's game stories and epics
     - Asset specifications and pipelines
-  - Confirm access to `.bmad-2d-unity-game-dev/checklists/game-change-checklist`.
+  - Confirm access to `.bmad-3d-unity-game-dev/checklists/game-change-checklist`.
 
 - **Establish Interaction Mode:**
   - Ask the user their preferred interaction mode:
@@ -6795,9 +6795,9 @@ Based on the analysis and agreed path forward:
   - Performance trade-offs considered
   - Platform-specific accommodations
   - Unity-specific implementation notes
-==================== END: .bmad-2d-unity-game-dev/tasks/correct-course-game.md ====================
+==================== END: .bmad-3d-unity-game-dev/tasks/correct-course-game.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/create-game-story.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/create-game-story.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Create Game Story Task
@@ -6810,7 +6810,7 @@ To identify the next logical game story based on project progress and epic defin
 
 ### 0. Load Core Configuration and Check Workflow
 
-- Load `.bmad-2d-unity-game-dev/core-config.yaml` from the project root
+- Load `.bmad-3d-unity-game-dev/core-config.yaml` from the project root
 - If the file does not exist, HALT and inform the user: "core-config.yaml not found. This file is required for story creation. You can either: 1) Copy core-config.yaml from GITHUB bmad-core/ and configure it for your game project OR 2) Run the BMad installer against your project to upgrade and add the file automatically. Please add and configure before proceeding."
 - Extract key configurations: `devStoryLocation`, `gdd.*`, `gamearchitecture.*`, `workflow.*`
 
@@ -6956,7 +6956,7 @@ ALWAYS cite source documents: `[Source: gamearchitecture/{filename}.md#{section}
   - Asset requirements specified
   - Performance targets defined
 - Update status to "Draft" and save the story file
-- Execute `.bmad-2d-unity-game-dev/tasks/execute-checklist` `.bmad-2d-unity-game-dev/checklists/game-story-dod-checklist`
+- Execute `.bmad-3d-unity-game-dev/tasks/execute-checklist` `.bmad-3d-unity-game-dev/checklists/game-story-dod-checklist`
 - Provide summary to user including:
   - Story created: `{devStoryLocation}/{epicNum}.{storyNum}.story.md`
   - Status: Draft
@@ -6983,10 +6983,10 @@ Before finalizing, ensure:
 - [ ] Platform-specific code paths are noted
 - [ ] Package compatibility is verified (e.g., URP vs Built-in pipeline)
 
-This task ensures game development stories are immediately actionable and enable efficient AI-driven development of Unity 2D game features.
-==================== END: .bmad-2d-unity-game-dev/tasks/create-game-story.md ====================
+This task ensures game development stories are immediately actionable and enable efficient AI-driven development of Unity 3D game features.
+==================== END: .bmad-3d-unity-game-dev/tasks/create-game-story.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/game-design-brainstorming.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/game-design-brainstorming.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Game Design Brainstorming Techniques Task
@@ -7279,22 +7279,22 @@ This task provides a comprehensive toolkit of creative brainstorming techniques 
 - Consider accessibility and inclusivity from the start
 - Balance innovation with market viability
 - Plan for iteration based on player feedback
-==================== END: .bmad-2d-unity-game-dev/tasks/game-design-brainstorming.md ====================
+==================== END: .bmad-3d-unity-game-dev/tasks/game-design-brainstorming.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/tasks/validate-game-story.md ====================
+==================== START: .bmad-3d-unity-game-dev/tasks/validate-game-story.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Validate Game Story Task
 
 ## Purpose
 
-To comprehensively validate a Unity 2D game development story draft before implementation begins, ensuring it contains all necessary Unity-specific technical context, game development requirements, and implementation details. This specialized validation prevents hallucinations, ensures Unity development readiness, and validates game-specific acceptance criteria and testing approaches.
+To comprehensively validate a Unity 3D game development story draft before implementation begins, ensuring it contains all necessary Unity-specific technical context, game development requirements, and implementation details. This specialized validation prevents hallucinations, ensures Unity development readiness, and validates game-specific acceptance criteria and testing approaches.
 
 ## SEQUENTIAL Task Execution (Do not proceed until current Task is complete)
 
 ### 0. Load Core Configuration and Inputs
 
-- Load `.bmad-2d-unity-game-dev/core-config.yaml` from the project root
+- Load `.bmad-3d-unity-game-dev/core-config.yaml` from the project root
 - If the file does not exist, HALT and inform the user: "core-config.yaml not found. This file is required for story validation."
 - Extract key configurations: `devStoryLocation`, `gdd.*`, `gamearchitecture.*`, `workflow.*`
 - Identify and load the following inputs:
@@ -7348,7 +7348,7 @@ To comprehensively validate a Unity 2D game development story draft before imple
 - **UI/UX integration**: Are Canvas setup, UI components, and player feedback systems defined?
 - **Audio integration**: Are AudioSource, AudioMixer, and sound effect requirements specified?
 - **Animation systems**: Are Animator Controllers, Animation Clips, and transition requirements clear?
-- **Physics integration**: Are Rigidbody2D, Collider2D, and physics material requirements specified?
+- **Physics integration**: Are Rigidbody, Collider, and physics material requirements specified?
 
 ### 5. Unity-Specific Acceptance Criteria Assessment
 
@@ -7484,9 +7484,9 @@ Based on validation results, provide specific recommendations for:
 - Performance testing and profiling setup requirements
 - Platform-specific development environment setup needs
 - Unity Test Framework implementation recommendations
-==================== END: .bmad-2d-unity-game-dev/tasks/validate-game-story.md ====================
+==================== END: .bmad-3d-unity-game-dev/tasks/validate-game-story.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/checklists/game-architect-checklist.md ====================
+==================== START: .bmad-3d-unity-game-dev/checklists/game-architect-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Game Architect Solution Validation Checklist
@@ -7509,7 +7509,7 @@ IMPORTANT: If any required documents are missing or inaccessible, immediately as
 GAME PROJECT TYPE DETECTION:
 First, determine the game project type by checking:
 
-- Is this a 2D Unity game project?
+- Is this a 3D Unity game project?
 - What platforms are targeted?
 - What are the core game mechanics from the GDD?
 - Are there specific performance requirements?
@@ -7600,9 +7600,9 @@ Ask the user if they want to work through the checklist:
 
 - [ ] Unity version (preferably LTS) is specifically defined
 - [ ] Required Unity packages are listed with versions
-- [ ] Unity features used are appropriate for 2D game development
+- [ ] Unity features used are appropriate for 3D game development
 - [ ] Third-party Unity assets are justified and documented
-- [ ] Technology choices leverage Unity's 2D toolchain effectively
+- [ ] Technology choices leverage Unity's 3D toolchain effectively
 
 ### 3.2 Game Systems Architecture
 
@@ -7613,7 +7613,7 @@ Ask the user if they want to work through the checklist:
 - [ ] Scene management and loading architecture is clear
 - [ ] Gameplay systems architecture covers core game mechanics and player interactions
 - [ ] Component architecture details define MonoBehaviour and ScriptableObject patterns
-- [ ] Physics configuration for Unity 2D is comprehensively defined
+- [ ] Physics configuration for Unity 3D is comprehensively defined
 - [ ] State machine architecture covers game states, player states, and entity behaviors
 - [ ] UI component system and data binding patterns are established
 - [ ] UI state management across screens and game states is defined
@@ -7622,7 +7622,7 @@ Ask the user if they want to work through the checklist:
 - [ ] Multiplayer architecture is detailed (if applicable)
 - [ ] Rendering pipeline configuration and optimization strategies are clear
 - [ ] Shader guidelines and performance considerations are documented
-- [ ] Sprite management and optimization strategies are defined
+- [ ] 3D model and texture management strategies are defined
 - [ ] Particle system architecture and performance budgets are established
 - [ ] Audio architecture includes system design and category management
 - [ ] Audio mixing configuration with Unity AudioMixer is detailed
@@ -7639,7 +7639,7 @@ Ask the user if they want to work through the checklist:
 
 ### 3.4 Asset Pipeline & Management
 
-- [ ] Sprite and texture management approach is defined
+- [ ] 3D model and texture management approach is defined
 - [ ] Audio asset organization is specified
 - [ ] Prefab organization and management is planned
 - [ ] Asset loading and memory management strategies are outlined
@@ -7651,8 +7651,11 @@ Ask the user if they want to work through the checklist:
 
 ### 4.1 Rendering Performance
 
-- [ ] 2D rendering pipeline optimization is addressed
-- [ ] Sprite batching and draw call optimization is planned
+- [ ] 3D rendering pipeline optimization is addressed
+- [ ] Draw call optimization and LOD systems are planned
+- [ ] Camera culling and occlusion culling strategies are defined
+- [ ] Lighting system performance considerations are addressed
+- [ ] Shadow rendering optimization is planned
 - [ ] UI rendering performance is considered
 - [ ] Particle system performance limits are defined
 - [ ] Target platform rendering constraints are addressed
@@ -7767,11 +7770,11 @@ Ask the user if they want to work through the checklist:
 
 ## 8. GAME CONTENT & ASSET MANAGEMENT
 
-[[LLM: Games require extensive asset management. Consider how sprites, audio, prefabs, and data will be organized, loaded, and managed throughout the game's lifecycle. Look for scalable approaches that work with Unity's asset pipeline.]]
+[[LLM: 3D games require extensive asset management. Consider how 3D models, textures, materials, audio, prefabs, and data will be organized, loaded, and managed throughout the game's lifecycle. Look for scalable approaches that work with Unity's asset pipeline.]]
 
 ### 8.1 Game Asset Organization
 
-- [ ] Sprite and texture organization is clearly defined
+- [ ] 3D model, texture, and material organization is clearly defined
 - [ ] Audio asset organization and management is specified
 - [ ] Prefab organization and naming conventions are outlined
 - [ ] ScriptableObject organization for game data is defined
@@ -7880,9 +7883,9 @@ Generate a comprehensive validation report that includes:
    - Testing strategy completeness
 
 After presenting the report, ask the user if they would like detailed analysis of any specific game system or Unity-specific concerns.]]
-==================== END: .bmad-2d-unity-game-dev/checklists/game-architect-checklist.md ====================
+==================== END: .bmad-3d-unity-game-dev/checklists/game-architect-checklist.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/checklists/game-change-checklist.md ====================
+==================== START: .bmad-3d-unity-game-dev/checklists/game-change-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Game Development Change Navigation Checklist
@@ -8088,9 +8091,9 @@ Keep it technically precise and actionable.]]
 - [ ] **Developer Handoff:** Ensure game-dev agent has all technical details needed.
 
 ---
-==================== END: .bmad-2d-unity-game-dev/checklists/game-change-checklist.md ====================
+==================== END: .bmad-3d-unity-game-dev/checklists/game-change-checklist.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/checklists/game-design-checklist.md ====================
+==================== START: .bmad-3d-unity-game-dev/checklists/game-design-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Game Design Document Quality Checklist
@@ -8294,9 +8297,9 @@ _List any critical items that need attention before moving to implementation pha
 
 **Next Steps:**
 _Outline immediate next actions for the team based on this assessment._
-==================== END: .bmad-2d-unity-game-dev/checklists/game-design-checklist.md ====================
+==================== END: .bmad-3d-unity-game-dev/checklists/game-design-checklist.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/checklists/game-story-dod-checklist.md ====================
+==================== START: .bmad-3d-unity-game-dev/checklists/game-story-dod-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Game Development Story Definition of Done (DoD) Checklist
@@ -8423,14 +8426,14 @@ After completing the checklist:
 Be honest - it's better to flag issues now than have them discovered during playtesting.]]
 
 - [ ] I, the Game Developer Agent, confirm that all applicable items above have been addressed.
-==================== END: .bmad-2d-unity-game-dev/checklists/game-story-dod-checklist.md ====================
+==================== END: .bmad-3d-unity-game-dev/checklists/game-story-dod-checklist.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/workflows/game-dev-greenfield.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/workflows/game-dev-greenfield.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 workflow:
   id: unity-game-dev-greenfield
   name: Game Development - Greenfield Project (Unity)
-  description: Specialized workflow for creating 2D games from concept to implementation using Unity and C#. Guides teams through game concept development, design documentation, technical architecture, and story-driven development for professional game development.
+  description: Specialized workflow for creating 3D games from concept to implementation using Unity and C#. Guides teams through game concept development, design documentation, technical architecture, and story-driven development for professional game development.
   type: greenfield
   project_types:
     - indie-game
@@ -8610,9 +8613,9 @@ workflow:
       - Testing framework in place
       - Team roles and responsibilities defined
       - First implementation stories created and ready
-==================== END: .bmad-2d-unity-game-dev/workflows/game-dev-greenfield.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/workflows/game-dev-greenfield.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/workflows/game-prototype.yaml ====================
+==================== START: .bmad-3d-unity-game-dev/workflows/game-prototype.yaml ====================
 # <!-- Powered by BMAD™ Core -->
 workflow:
   id: unity-game-prototype
@@ -8731,7 +8734,7 @@ workflow:
       - Be willing to pivot mechanics if they don't feel good
       - Document what works and what doesn't
     technical_efficiency:
-      - Use simple graphics (geometric shapes, basic sprites)
+      - Use simple graphics (primitive shapes, basic models, placeholder materials)
       - Leverage Unity's built-in components heavily
       - Avoid complex custom systems in prototypes
       - Prioritize functional over polished
@@ -8789,9 +8792,9 @@ workflow:
     technical_to_stories: Technical plan complete. Create focused implementation stories for prototype development.
     stories_to_implementation: Stories ready. Begin iterative implementation with frequent playtesting and design validation.
     prototype_to_evaluation: Prototype playable. Evaluate core mechanics, gather feedback, and determine next development steps.
-==================== END: .bmad-2d-unity-game-dev/workflows/game-prototype.yaml ====================
+==================== END: .bmad-3d-unity-game-dev/workflows/game-prototype.yaml ====================
 
-==================== START: .bmad-2d-unity-game-dev/data/bmad-kb.md ====================
+==================== START: .bmad-3d-unity-game-dev/data/bmad-kb.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # BMad Knowledge Base - 2D Unity Game Development
@@ -9563,16 +9566,16 @@ Use the **expansion-creator** pack to build your own game development extensions
 - **Game Contributing**: See `CONTRIBUTING.md` for full game development guidelines
 
 This knowledge base provides the foundation for effective game development using the BMad-Method framework with specialized focus on 2D game creation using Unity and C#.
-==================== END: .bmad-2d-unity-game-dev/data/bmad-kb.md ====================
+==================== END: .bmad-3d-unity-game-dev/data/bmad-kb.md ====================
 
-==================== START: .bmad-2d-unity-game-dev/data/development-guidelines.md ====================
+==================== START: .bmad-3d-unity-game-dev/data/development-guidelines.md ====================
 <!-- Powered by BMAD™ Core -->
 
 # Game Development Guidelines (Unity & C#)
 
 ## Overview
 
-This document establishes coding standards, architectural patterns, and development practices for 2D game development using Unity and C#. These guidelines ensure consistency, performance, and maintainability across all game development stories.
+This document establishes coding standards, architectural patterns, and development practices for 3D game development using Unity and C#. These guidelines ensure consistency, performance, and maintainability across all game development stories.
 
 ## C# Standards
 
@@ -9805,7 +9808,8 @@ public class EnemyData : ScriptableObject
     public int maxHealth;
     public float moveSpeed;
     public int damage;
-    public Sprite sprite;
+    public Material material;
+    public Mesh mesh;
 }
 
 // Enemy.cs - A MonoBehaviour that uses the EnemyData.
@@ -9817,10 +9821,202 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _currentHealth = _enemyData.maxHealth;
-        GetComponent<SpriteRenderer>().sprite = _enemyData.sprite;
+        var meshRenderer = GetComponent<MeshRenderer>();
+        var meshFilter = GetComponent<MeshFilter>();
+        meshRenderer.material = _enemyData.material;
+        meshFilter.mesh = _enemyData.mesh;
     }
 
     // ... other enemy logic
+}
+```
+
+## 3D Game Development Specifics
+
+### Camera Systems
+
+**3D Camera Controller:**
+
+```csharp
+// ThirdPersonCamera.cs - A flexible third-person camera controller.
+using UnityEngine;
+
+public class ThirdPersonCamera : MonoBehaviour
+{
+    [SerializeField] private Transform _target;
+    [SerializeField] private float _distance = 5.0f;
+    [SerializeField] private float _height = 2.0f;
+    [SerializeField] private float _rotationSpeed = 2.0f;
+    [SerializeField] private float _followSpeed = 5.0f;
+
+    private float _currentRotationAngle;
+
+    private void LateUpdate()
+    {
+        if (_target == null) return;
+
+        // Handle camera rotation around target
+        _currentRotationAngle += Input.GetAxis("Mouse X") * _rotationSpeed;
+
+        // Calculate desired position
+        Vector3 direction = new Vector3(0, _height, -_distance);
+        Quaternion rotation = Quaternion.Euler(0, _currentRotationAngle, 0);
+        Vector3 desiredPosition = _target.position + rotation * direction;
+
+        // Smooth camera movement
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, _followSpeed * Time.deltaTime);
+        transform.LookAt(_target.position + Vector3.up * _height);
+    }
+}
+```
+
+### 3D Movement and Controls
+
+**Character Controller Based Movement:**
+
+```csharp
+// PlayerMovement3D.cs - Robust 3D character movement using CharacterController.
+using UnityEngine;
+
+[RequireComponent(typeof(CharacterController))]
+public class PlayerMovement3D : MonoBehaviour
+{
+    [Header("Movement")]
+    [SerializeField] private float _walkSpeed = 5.0f;
+    [SerializeField] private float _runSpeed = 10.0f;
+    [SerializeField] private float _jumpHeight = 2.0f;
+    [SerializeField] private float _gravity = -20.0f;
+    [SerializeField] private float _rotationSpeed = 720.0f;
+
+    private CharacterController _controller;
+    private Vector3 _velocity;
+    private bool _isGrounded;
+    private Transform _cameraTransform;
+
+    private void Awake()
+    {
+        _controller = GetComponent<CharacterController>();
+        _cameraTransform = Camera.main.transform;
+    }
+
+    private void Update()
+    {
+        _isGrounded = _controller.isGrounded;
+
+        HandleMovement();
+        HandleJumping();
+        ApplyGravity();
+
+        _controller.Move(_velocity * Time.deltaTime);
+    }
+
+    private void HandleMovement()
+    {
+        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        if (input.magnitude < 0.1f) return;
+
+        // Calculate movement direction relative to camera
+        Vector3 forward = _cameraTransform.forward;
+        Vector3 right = _cameraTransform.right;
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 desiredMoveDirection = forward * input.y + right * input.x;
+        float speed = Input.GetKey(KeyCode.LeftShift) ? _runSpeed : _walkSpeed;
+
+        // Apply movement
+        _velocity.x = desiredMoveDirection.x * speed;
+        _velocity.z = desiredMoveDirection.z * speed;
+
+        // Rotate character to face movement direction
+        if (desiredMoveDirection.magnitude > 0.1f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(desiredMoveDirection);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    private void HandleJumping()
+    {
+        if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
+        }
+    }
+
+    private void ApplyGravity()
+    {
+        if (!_isGrounded)
+        {
+            _velocity.y += _gravity * Time.deltaTime;
+        }
+        else if (_velocity.y < 0)
+        {
+            _velocity.y = -2f; // Keep character grounded
+        }
+    }
+}
+```
+
+### Lighting and Materials
+
+**Dynamic Lighting System:**
+
+```csharp
+// LightingManager.cs - Manages dynamic lighting conditions.
+using UnityEngine;
+
+public class LightingManager : MonoBehaviour
+{
+    [Header("Day/Night Cycle")]
+    [SerializeField] private Light _sunLight;
+    [SerializeField] private Gradient _sunColor;
+    [SerializeField] private AnimationCurve _sunIntensity;
+    [SerializeField] private float _dayDurationSeconds = 120f;
+
+    [Header("Environment")]
+    [SerializeField] private Material _skyboxMaterial;
+    [SerializeField] private string _skyboxTintProperty = "_Tint";
+
+    private float _timeOfDay = 0.5f; // 0 = midnight, 0.5 = noon, 1 = midnight
+
+    private void Update()
+    {
+        UpdateTimeOfDay();
+        UpdateSunLighting();
+        UpdateSkybox();
+    }
+
+    private void UpdateTimeOfDay()
+    {
+        _timeOfDay += Time.deltaTime / _dayDurationSeconds;
+        if (_timeOfDay >= 1f) _timeOfDay = 0f;
+    }
+
+    private void UpdateSunLighting()
+    {
+        if (_sunLight == null) return;
+
+        // Rotate sun based on time of day
+        float sunAngle = _timeOfDay * 360f - 90f; // -90 to start at horizon
+        _sunLight.transform.rotation = Quaternion.Euler(sunAngle, 30f, 0f);
+
+        // Update sun color and intensity
+        _sunLight.color = _sunColor.Evaluate(_timeOfDay);
+        _sunLight.intensity = _sunIntensity.Evaluate(_timeOfDay);
+    }
+
+    private void UpdateSkybox()
+    {
+        if (_skyboxMaterial != null)
+        {
+            Color skyTint = Color.Lerp(Color.black, Color.white, _sunIntensity.Evaluate(_timeOfDay));
+            _skyboxMaterial.SetColor(_skyboxTintProperty, skyTint);
+        }
+    }
 }
 ```
 
@@ -9913,8 +10109,12 @@ public class ObjectPool : MonoBehaviour
 
 **Physics Optimization:**
 
-- Adjust the "Physics 2D Settings" in Project Settings, especially the "Layer Collision Matrix", to prevent unnecessary collision checks.
-- Use `Rigidbody2D.Sleep()` for objects that are not moving to save CPU cycles.
+- Adjust the "Physics Settings" in Project Settings, especially the "Layer Collision Matrix", to prevent unnecessary collision checks.
+- Use `Rigidbody.Sleep()` for objects that are not moving to save CPU cycles.
+- Consider using continuous collision detection for fast-moving objects to prevent tunneling.
+- Use appropriate collider types: BoxCollider for simple shapes, MeshCollider for complex geometry, but be mindful of performance.
+- Implement occlusion culling for complex scenes to improve rendering performance.
+- Use Level of Detail (LOD) systems for models that appear at various distances.
 
 ## Input Handling
 
@@ -9979,12 +10179,12 @@ if (playerSprite == null)
 
 ```csharp
 // Example of using an assertion to ensure a component exists.
-private Rigidbody2D _rb;
+private Rigidbody _rb;
 
 void Awake()
 {
-    _rb = GetComponent<Rigidbody2D>();
-    Debug.Assert(_rb != null, "Rigidbody2D component not found on player!");
+    _rb = GetComponent<Rigidbody>();
+    Debug.Assert(_rb != null, "Rigidbody component not found on player!");
 }
 ```
 
@@ -10154,4 +10354,4 @@ Assets/
 - **Scene Transitions**: Under 2 seconds between scenes. Use asynchronous scene loading.
 
 These guidelines ensure consistent, high-quality game development that meets performance targets and maintains code quality across all implementation stories.
-==================== END: .bmad-2d-unity-game-dev/data/development-guidelines.md ====================
+==================== END: .bmad-3d-unity-game-dev/data/development-guidelines.md ====================
